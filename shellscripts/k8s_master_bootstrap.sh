@@ -4,13 +4,14 @@ PROJECT_PATH=/home/$USER/k8s_aws
 FILE=$PROJECT_PATH/.kube/config
 K8S_VERSION=v1.30.4
 
+
 if [ -f "$FILE" ]; then
     printf "\n Deleting existing k8s Cluster...\n"
     kubeadm reset --force
 fi
 ####################### Init K8s Cluster ########################
 printf "\nInitializing Cluster...\n"
-  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml -v=5
+  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml
 
 printf "\nCopying Config Files...\n"
   su - $USER -c 'mkdir -p $HOME/.kube'
@@ -24,7 +25,7 @@ sleep 5
 ####################### Install Calico Cluster ########################
 
 printf "\nInstalling Tigera Operator for Calico CNI...\n"
-  su - $USER -c 'helm install calico '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/tigera-operator -f /vagrant/manifests/tigera-operator/values.yaml --create-namespace --namespace tigera-operator'
+  su - $USER -c 'helm install calico '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/tigera-operator -f --create-namespace --namespace tigera-operator'
 
 #printf "\nInstalling Calico CNI with VXLAN...\n"
 #  su - vagrant -c 'kubectl apply -f /vagrant/manifests/tigera-operator/calico-install-vxlan.yaml'
@@ -35,8 +36,8 @@ sleep 5
 ####################### Install Kube-VIP ########################
 
 printf "\nInstalling Kube-vip...\n"
-   su - $USER -c 'helm install kube-vip --create-namespace --namespace kube-vip /vagrant/manifests/kube-vip -f /vagrant/manifests/kube-vip/values.yaml '
-   su - $USER -c 'helm install kube-vip-cloud-provider --namespace kube-vip /vagrant/manifests/kube-vip-cloud-provider -f /vagrant/manifests/kube-vip-cloud-provider/values.yaml'
+   su - $USER -c 'helm install kube-vip --create-namespace --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip'
+   su - $USER -c 'helm install kube-vip-cloud-provider --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip-cloud-provider'
 
 printf "\nCooling down for 5 seconds...\n"
 sleep 5
