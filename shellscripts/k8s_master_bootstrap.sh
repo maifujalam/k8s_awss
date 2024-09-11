@@ -4,6 +4,7 @@ PROJECT_PATH=/home/$USER/k8s_aws
 FILE=$PROJECT_PATH/.kube/config
 K8S_VERSION=v1.30.4
 
+echo $FILE
 
 if [ -f "$FILE" ]; then
     printf "\n Deleting existing k8s Cluster...\n"
