@@ -1,8 +1,8 @@
 #!/bin/bash
-PROJECT_PATH=~/k8s_aws
+USER=ec2-user
+PROJECT_PATH=/home/$USER/k8s_aws
 FILE=$PROJECT_PATH/.kube/config
 K8S_VERSION=v1.30.4
-USER=$(whoami)
 
 if [ -f "$FILE" ]; then
     printf "\n Deleting existing k8s Cluster...\n"
@@ -10,7 +10,7 @@ if [ -f "$FILE" ]; then
 fi
 ####################### Init K8s Cluster ########################
 printf "\nInitializing Cluster...\n"
-  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml
+  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml -v=5
 
 printf "\nCopying Config Files...\n"
   su - $USER -c 'mkdir -p $HOME/.kube'
