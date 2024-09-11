@@ -1,0 +1,11 @@
+region = "ap-south-1"
+instance_name = "k8s"
+vm_count = 1
+enable_public_ip = true
+launch_template = "launch-template-rhel"  # for rhel bastion-rhel
+root_volume_size = 10
+vpc_name = "default"
+subnet_name = "subnet-1"
+spot_instance = true
+instance_type = "t3a.medium"
+project = "k8s_aws"
