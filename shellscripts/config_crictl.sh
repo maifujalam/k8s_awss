@@ -15,5 +15,5 @@ sudo systemctl restart containerd.service
 #sudo chmod -R 777 /var/run/containerd/
 sudo cp $PROJECT_PATH/k8s/v1.30.4/configs/crictl.yaml /etc/ -vf
 crictl version
-printf "\nChecking All containers..\n\n"
-crictl ps
+sudo printf "\nChecking All containers..\n\n"
+sudo crictl ps
