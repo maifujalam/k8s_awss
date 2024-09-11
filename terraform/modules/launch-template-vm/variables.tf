@@ -4,28 +4,24 @@ variable "region" {
 variable "owner" {
   default = "skalam"
 }
-variable "project" {
-  default = "default-project"
-}
-variable "vm_count" {
-  default = "1"
+variable "launch_template" {
+  default = "bastion-ubuntu-2404"
 }
 variable "instance_name" {
   default = "default-instance"
+}
+variable "instance_type" {
+  default = "t2.micro"
+}
+variable "vm_count" {
+  default = "1"
 }
 variable "enable_public_ip" {
   default = "true"
   description = "Whether it is public vm or private vm"
 }
-variable "launch_template" {
-  default = "bastion-ubuntu"
-}
-variable "instance_type" {
-  default = "t2.micro"
-}
 variable "root_volume_size" {
   description = "Size of root volume"
-  default = 10
 }
 variable "spot_instance" {
   default = false

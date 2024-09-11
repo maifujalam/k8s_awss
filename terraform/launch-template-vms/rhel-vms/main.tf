@@ -7,6 +7,5 @@ module "rhel-vms" {
   launch_template = var.launch_template
   root_volume_size = var.root_volume_size
   instance_type = var.instance_type
-  project = var.project
 }
 
