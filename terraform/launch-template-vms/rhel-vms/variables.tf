@@ -7,6 +7,9 @@ variable "owner" {
 variable "project" {
   default = "default-project"
 }
+variable "private_ip" {
+  default = "172.168.16.4"
+}
 variable "vm_count" {
   default = "1"
 }

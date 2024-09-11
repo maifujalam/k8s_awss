@@ -7,6 +7,9 @@ variable "owner" {
 variable "project" {
   default = "default-project"
 }
+variable "private_ip" {
+  default = ""
+}
 variable "launch_template" {
   default = "bastion-ubuntu-2404"
 }

@@ -1,7 +1,6 @@
 locals {
   aws_subnet=var.subnet_name
 }
-
 resource "aws_instance" "vm" {
   count = var.vm_count
   launch_template {
@@ -10,6 +9,7 @@ resource "aws_instance" "vm" {
   subnet_id = data.aws_subnet.selected_subnet.id
   instance_type = var.instance_type
   associate_public_ip_address = var.enable_public_ip
+  private_ip = var.private_ip != "" ? var.private_ip : null
   root_block_device {
     volume_size = var.root_volume_size
     delete_on_termination = true
