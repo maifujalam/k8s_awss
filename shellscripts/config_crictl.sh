@@ -10,10 +10,10 @@ printf "\nConfiguring crictl\n"
 #fi
 #sudo tar zxf /vagrant/ShellScripts/crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
 ############ Configure crictl ##########################
-sudo cp $PROJECT_PATH/k8s/v1.30.4/configs/config.toml /etc/containerd/ -vf
+cp $PROJECT_PATH/k8s/v1.30.4/configs/config.toml /etc/containerd/ -vf
 sudo systemctl restart containerd.service
 #sudo chmod -R 777 /var/run/containerd/
-sudo cp $PROJECT_PATH/k8s/v1.30.4/configs/crictl.yaml /etc/ -vf
-crictl version
+cp $PROJECT_PATH/k8s/v1.30.4/configs/crictl.yaml /etc/ -vf
+sudo crictl version
 sudo printf "\nChecking All containers..\n\n"
 sudo crictl ps
