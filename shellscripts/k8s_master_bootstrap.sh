@@ -1,7 +1,7 @@
 #!/bin/bash
 USER=ec2-user
 PROJECT_PATH=/home/$USER/k8s_aws
-FILE=$PROJECT_PATH/.kube/config
+FILE=/home/$USER/.kube/config
 K8S_VERSION=v1.30.4
 
 echo $FILE
