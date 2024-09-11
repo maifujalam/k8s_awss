@@ -28,7 +28,7 @@ fi
 
 if [ -d "$PACKAGE_DIRECTORY" ] && [ -z "$(ls -A $PACKAGE_DIRECTORY)" ]; then
     echo "The directory $PACKAGE_DIRECTORY exists and is empty."
-    sudo yum install -y containerd kubelet-$KUBERNETES_VERSION kubeadm-$KUBERNETES_VERSION kubectl-$KUBERNETES_VERSION --downloadonly --downloaddir=$PACKAGE_DIRECTORY/packages/.
+    sudo yum install -y containerd kubelet-$KUBERNETES_VERSION kubeadm-$KUBERNETES_VERSION kubectl-$KUBERNETES_VERSION --downloadonly --downloaddir=$PACKAGE_DIRECTORY.
 else
     echo "The directory $PACKAGE_DIRECTORY either does not exist or is not empty."
 fi
