@@ -4,6 +4,9 @@ variable "region" {
 variable "owner" {
   default = "skalam"
 }
+variable "project" {
+  default = "default-project"
+}
 variable "vm_count" {
   default = "1"
 }

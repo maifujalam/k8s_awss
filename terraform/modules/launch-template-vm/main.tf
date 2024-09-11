@@ -17,6 +17,7 @@ resource "aws_instance" "vm" {
   tags = {
     Name =  "${var.instance_name}-${count.index+1}"
     Owner      = var.owner
+    project = var.project
     createdBy  = "terraform"
     ModulePath = path.module
     CWD        = path.cwd

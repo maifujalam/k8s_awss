@@ -4,6 +4,9 @@ variable "region" {
 variable "owner" {
   default = "skalam"
 }
+variable "project" {
+  default = "default-project"
+}
 variable "launch_template" {
   default = "bastion-ubuntu-2404"
 }
