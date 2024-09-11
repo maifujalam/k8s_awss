@@ -26,7 +26,7 @@ echo $FILE
 ####################### Install Calico Cluster ########################
 
 printf "\nInstalling Tigera Operator for Calico CNI...\n"
-  su - $USER -c 'helm install calico '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/tigera-operator -f --create-namespace --namespace tigera-operator'
+  su - $USER -c "helm install calico '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/tigera-operator --create-namespace --namespace tigera-operator"
 
 #printf "\nInstalling Calico CNI with VXLAN...\n"
 #  su - vagrant -c 'kubectl apply -f /vagrant/manifests/tigera-operator/calico-install-vxlan.yaml'
