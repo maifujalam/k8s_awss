@@ -6,22 +6,22 @@ K8S_VERSION=v1.30.4
 
 echo $FILE
 
-if [ -f "$FILE" ]; then
-    printf "\n Deleting existing k8s Cluster...\n"
-    kubeadm reset --force
-fi
-####################### Init K8s Cluster ########################
-printf "\nInitializing Cluster...\n"
-  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml
-
-printf "\nCopying Config Files...\n"
-  su - $USER -c 'mkdir -p $HOME/.kube'
-  su - $USER -c 'sudo cp -vf /etc/kubernetes/admin.conf $HOME/.kube/config'
-  su - $USER -c 'sudo cp -vf /etc/kubernetes/admin.conf $HOME/config'
-  su - $USER -c 'sudo chown $(id -u):$(id -g) $HOME/.kube/config'
-
-printf "\nCooling down for 5 seconds...\n"
-sleep 5
+#if [ -f "$FILE" ]; then
+#    printf "\n Deleting existing k8s Cluster...\n"
+#    kubeadm reset --force
+#fi
+######################## Init K8s Cluster ########################
+#printf "\nInitializing Cluster...\n"
+#  kubeadm init --config $PROJECT_PATH/k8s/$K8S_VERSION/kubeadm-init/init-default.yaml
+#
+#printf "\nCopying Config Files...\n"
+#  su - $USER -c 'mkdir -p $HOME/.kube'
+#  su - $USER -c 'sudo cp -vf /etc/kubernetes/admin.conf $HOME/.kube/config'
+#  su - $USER -c 'sudo cp -vf /etc/kubernetes/admin.conf $HOME/config'
+#  su - $USER -c 'sudo chown $(id -u):$(id -g) $HOME/.kube/config'
+#
+#printf "\nCooling down for 5 seconds...\n"
+#sleep 5
 
 ####################### Install Calico Cluster ########################
 
