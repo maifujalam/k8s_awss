@@ -34,14 +34,14 @@ printf "\nInstalling Tigera Operator for Calico CNI...\n"
 printf "\nCooling down for 5 seconds...\n"
 sleep 5
 
-####################### Install Kube-VIP ########################
-
-printf "\nInstalling Kube-vip...\n"
-   su - $USER -c "helm install kube-vip --create-namespace --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip"
-   su - $USER -c "helm install kube-vip-cloud-provider --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip-cloud-provider"
-
-printf "\nCooling down for 5 seconds...\n"
-sleep 5
+######################## Install Kube-VIP ########################
+#
+#printf "\nInstalling Kube-vip...\n"
+#   su - $USER -c "helm install kube-vip --create-namespace --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip"
+#   su - $USER -c "helm install kube-vip-cloud-provider --namespace kube-vip '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/kube-vip-cloud-provider"
+#
+#printf "\nCooling down for 5 seconds...\n"
+#sleep 5
 
 ##################### Install Metric Server ########################
 
