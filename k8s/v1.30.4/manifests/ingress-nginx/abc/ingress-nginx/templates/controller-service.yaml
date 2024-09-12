@@ -4,9 +4,9 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
-    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-arn: "arn:aws:elasticloadbalancing:ap-south-1:493253814443:loadbalancer/app/lb-1/13643c2907ab228b"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
   labels:
     helm.sh/chart: ingress-nginx-4.11.2
     app.kubernetes.io/name: ingress-nginx
@@ -19,6 +19,7 @@ metadata:
   namespace: default
 spec:
   type: LoadBalancer
+  loadBalancerIP: lb-1-1493332617.ap-south-1.elb.amazonaws.com
   ipFamilyPolicy: SingleStack
   ipFamilies: 
     - IPv4
