@@ -492,7 +492,7 @@ controller:
     externalIPs: []
     # -- Deprecated: Pre-defined IP address of the external controller service. Used by cloud providers to connect the resulting load balancer service to a pre-existing static IP.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-    loadBalancerIP: ""
+    loadBalancerIP: "lb-1-1493332617.ap-south-1.elb.amazonaws.com"
     # -- Restrict access to the external controller service. Values must be CIDRs. Allows any source address by default.
     loadBalancerSourceRanges: []
     # -- Load balancer class of the external controller service. Used by cloud providers to select a load balancer implementation other than the cloud provider default.
@@ -555,7 +555,7 @@ controller:
       udp: {}
     internal:
       # -- Enable the internal controller service or not. Remember to configure `controller.service.internal.annotations` when enabling this.
-      enabled: true
+      enabled: false
       # -- Annotations to be added to the internal controller service. Mandatory for the internal controller service to be created. Varies with the cloud service.
       # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
       annotations:
