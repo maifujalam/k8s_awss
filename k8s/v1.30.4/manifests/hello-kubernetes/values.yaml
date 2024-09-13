@@ -41,7 +41,9 @@ deployment:
     kubernetes.io/arch: amd64
   resources: {}
 
-  tolerations: []
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      effect: NoSchedule
 
   affinity: {}
 
