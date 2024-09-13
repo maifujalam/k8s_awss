@@ -15,7 +15,7 @@ ingress:
     scope: cluster
     name: selfsigned-cluster-issuer
   hosts:
-    - helloworld.master.com
+    - helloworld.maifuj.com
   path: /
   pathType: Prefix
   secretName: "helloworld-secret"
