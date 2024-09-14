@@ -42,7 +42,7 @@ crds:
 global:
   # -- Default domain used by all components
   ## Used for ingresses, certificates, SSO, notifications, etc.
-  domain: argocd.master.com
+  domain: argocd.maifuj.com
 
   # -- Common labels for the all resources
   additionalLabels: {}
@@ -2002,15 +2002,16 @@ server:
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-certificates-used-by-argocd-server
   certificate:
     # -- Deploy a Certificate resource (requires cert-manager)
-    enabled: true
+    enabled: false
     # -- Certificate primary domain (commonName)
     # @default -- `""` (defaults to global.domain)
-    domain: "argocd.master.com"
+    domain: "argocd.maifuj.com"
     # -- Certificate Subject Alternate Names (SANs)
     additionalHosts:
       - master
       - localhost
       - argocd.master.com
+      - argocd.maifuj.com
     # -- The requested 'duration' (i.e. lifetime) of the certificate.
     # @default -- `""` (defaults to 2160h = 90d if not specified)
     ## Ref: https://cert-manager.io/docs/usage/certificate/#renewal

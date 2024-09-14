@@ -35,14 +35,14 @@ printf "\nCooling down for 5 seconds...\n"
 sleep 5
 
 
-###################### Install Cert Manager ########################
-#
-#printf "\nInstalling cert-manager...\n"
-#   su - $USER -c "helm install cert-manager --create-namespace --namespace cert-manager '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager"
-#   su - $USER -c "kubectl apply -f '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager/self-sign-issuer.yaml "
-#
-#printf "\nCooling down for 5 seconds...\n"
-#sleep 5
+##################### Install Cert Manager ########################
+
+printf "\nInstalling cert-manager...\n"
+   su - $USER -c "helm install cert-manager --create-namespace --namespace cert-manager '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager"
+   su - $USER -c "kubectl apply -f '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager/self-sign-issuer.yaml "
+
+printf "\nCooling down for 5 seconds...\n"
+sleep 5
 
 ####################### Install ingress-nginx ########################
 printf "\nInstalling ingress-nginx...\n"
@@ -55,10 +55,10 @@ printf "\nCooling down for 30 seconds...\n"
 printf "\nInstalling helloworld app ..\n"
    su - $USER -c "helm install helloworld '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/hello-kubernetes"
 
-######################## Install Argocd ########################
-#printf "\nInstalling ArgoCD...\n"
-#    su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd --create-namespace --namespace argo-cd'
-#
+####################### Install Argocd ########################
+printf "\nInstalling ArgoCD...\n"
+    su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd-7.4.3.tgz --create-namespace --namespace argo-cd'
+
 #printf "\nInstalling Argocd Apps ...\n"
 #    su - $USER -c'kubectl apply -f /vagrant/manifests/default-applications.yaml'
 
