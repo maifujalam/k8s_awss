@@ -51,6 +51,10 @@ printf "\nInstalling ingress-nginx...\n"
 printf "\nCooling down for 10 seconds...\n"
   sleep 10
 
+####################### Install ingress-nginx ########################
+printf "\nInstalling helloworld app ..\n"
+   su - $USER -c "helm install helloworld '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/hello-kubernetes"
+
 ######################### Install Argocd ########################
 #printf "\nInstalling ArgoCD...\n"
 #su - vagrant -c 'helm -n argo-cd install argo-cd /vagrant/manifests/argo-cd-7.4.3.tgz --create-namespace --namespace argo-cd'
