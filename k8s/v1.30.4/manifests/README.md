@@ -104,7 +104,7 @@ Blackbox Exporter:-
 2. helm search repo blackbox
 3. helm pull prometheus-community/prometheus-blackbox-exporter --version=9.0.0 --untar
 4. helm -n blackbox-exporter install blackbox prometheus-blackbox-exporter --create-namespace
-5. helm -n blackbox-exporter upgrade blackbox prometheus-blackbox-exporte
+5. helm -n blackbox-exporter upgrade blackbox prometheus-blackbox-exporter
 6. helm -n blackbox-exporter uninstall blackbox
 
 Argocd:

@@ -139,7 +139,9 @@ readinessProbe:
     port: http
 
 nodeSelector: {}
-tolerations: []
+tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    effect: NoSchedule
 affinity: {}
 
 ## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
