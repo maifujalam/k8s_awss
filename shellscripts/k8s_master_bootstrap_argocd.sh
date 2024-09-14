@@ -57,7 +57,7 @@ printf "\nInstalling helloworld app ..\n"
 
 ####################### Install Argocd ########################
 printf "\nInstalling ArgoCD...\n"
-    su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd-7.4.3.tgz --create-namespace --namespace argo-cd'
+    su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd --create-namespace --namespace argo-cd'
 
 #printf "\nInstalling Argocd Apps ...\n"
 #    su - $USER -c'kubectl apply -f /vagrant/manifests/default-applications.yaml'
