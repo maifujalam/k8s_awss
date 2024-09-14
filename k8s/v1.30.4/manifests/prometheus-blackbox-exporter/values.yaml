@@ -236,14 +236,14 @@ ingress:
   hosts:
     ## The host property on hosts and tls is passed through helm tpl function.
     ## ref: https://helm.sh/docs/developing_charts/#using-the-tpl-function
-    - host: blackbox.master.com
+    - host: blackbox.maifuj.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
       - secretName: chart-example-tls
         hosts:
-          - blackbox.master.com
+          - blackbox.maifuj.com
 
 podAnnotations: {}
 
