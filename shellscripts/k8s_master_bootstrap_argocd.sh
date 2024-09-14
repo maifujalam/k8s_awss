@@ -48,8 +48,8 @@ sleep 5
 printf "\nInstalling ingress-nginx...\n"
    su - $USER -c "helm -n ingress-nginx install ingress-nginx --create-namespace --namespace ingress-nginx '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/ingress-nginx"
 
-printf "\nCooling down for 10 seconds...\n"
-  sleep 10
+printf "\nCooling down for 30 seconds...\n"
+  sleep 30
 
 ####################### Install ingress-nginx ########################
 printf "\nInstalling helloworld app ..\n"
