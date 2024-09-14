@@ -55,11 +55,11 @@ printf "\nCooling down for 10 seconds...\n"
 printf "\nInstalling helloworld app ..\n"
    su - $USER -c "helm install helloworld '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/hello-kubernetes"
 
-######################### Install Argocd ########################
+######################## Install Argocd ########################
 #printf "\nInstalling ArgoCD...\n"
-#su - vagrant -c 'helm -n argo-cd install argo-cd /vagrant/manifests/argo-cd-7.4.3.tgz --create-namespace --namespace argo-cd'
+#    su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd --create-namespace --namespace argo-cd'
 #
 #printf "\nInstalling Argocd Apps ...\n"
-#  su - vagrant -c 'kubectl apply -f /vagrant/manifests/default-applications.yaml'
-#
-#printf "\n-------K8s master Initialized Successfully-----\n"
+#    su - $USER -c'kubectl apply -f /vagrant/manifests/default-applications.yaml'
+
+printf "\n-------K8s master Initialized Successfully-----\n"
