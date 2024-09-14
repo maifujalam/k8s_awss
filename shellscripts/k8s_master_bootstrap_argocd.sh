@@ -35,22 +35,22 @@ printf "\nCooling down for 5 seconds...\n"
 sleep 5
 
 
-##################### Install Cert Manager ########################
-
-printf "\nInstalling cert-manager...\n"
-   su - $USER -c "helm install cert-manager --create-namespace --namespace cert-manager '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager"
-   su - $USER -c "kubectl apply -f '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager/self-sign-issuer.yaml "
-
-printf "\nCooling down for 5 seconds...\n"
-sleep 5
-
-######################## Install ingress-nginx ########################
-#printf "\nInstalling ingress-nginx...\n"
-#   su - $USER -c "helm -n ingress-nginx install ingress-nginx --create-namespace --namespace ingress-nginx '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/ingress-nginx"
+###################### Install Cert Manager ########################
 #
-#printf "\nCooling down for 10 seconds...\n"
-#  sleep 10
+#printf "\nInstalling cert-manager...\n"
+#   su - $USER -c "helm install cert-manager --create-namespace --namespace cert-manager '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager"
+#   su - $USER -c "kubectl apply -f '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/cert-manager/self-sign-issuer.yaml "
 #
+#printf "\nCooling down for 5 seconds...\n"
+#sleep 5
+
+####################### Install ingress-nginx ########################
+printf "\nInstalling ingress-nginx...\n"
+   su - $USER -c "helm -n ingress-nginx install ingress-nginx --create-namespace --namespace ingress-nginx '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/ingress-nginx"
+
+printf "\nCooling down for 10 seconds...\n"
+  sleep 10
+
 ######################### Install Argocd ########################
 #printf "\nInstalling ArgoCD...\n"
 #su - vagrant -c 'helm -n argo-cd install argo-cd /vagrant/manifests/argo-cd-7.4.3.tgz --create-namespace --namespace argo-cd'
