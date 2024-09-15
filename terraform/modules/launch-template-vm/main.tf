@@ -9,7 +9,13 @@ resource "aws_instance" "vm" {
   subnet_id = data.aws_subnet.selected_subnet.id
   instance_type = var.instance_type
   associate_public_ip_address = var.enable_public_ip
-  private_ip = var.private_ip != "" ? var.private_ip : null
+  private_ip = var.private_ip != "" ? format(
+    "%s.%s.%s.%d",
+    split(".", var.private_ip)[0],  # First octet
+    split(".", var.private_ip)[1],  # Second octet
+    split(".", var.private_ip)[2],  # Third octet
+    tonumber(split(".", var.private_ip)[3]) + count.index  # Last octet + count.index
+  ) : null
   root_block_device {
     volume_size = var.root_volume_size
     delete_on_termination = true

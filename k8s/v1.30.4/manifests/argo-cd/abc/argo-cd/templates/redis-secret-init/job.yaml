@@ -1,0 +1,57 @@
+---
+# Source: argo-cd/templates/redis-secret-init/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: release-name-argocd-redis-secret-init
+  namespace: "default"
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+  labels:
+    helm.sh/chart: argo-cd-7.4.3-aws
+    app.kubernetes.io/name: argocd-redis-secret-init
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/component: redis-secret-init
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: "v2.12.0"
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: argo-cd-7.4.3-aws
+        app.kubernetes.io/name: argocd-redis-secret-init
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/component: redis-secret-init
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/part-of: argocd
+        app.kubernetes.io/version: "v2.12.0"
+    spec:
+      containers:
+      - command:
+          - argocd
+          - admin
+          - redis-initial-password
+        image: quay.io/argoproj/argocd:v2.12.0
+        imagePullPolicy: IfNotPresent
+        name: secret-init
+        resources:
+          {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+      restartPolicy: OnFailure
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+      serviceAccountName: release-name-argocd-redis-secret-init

@@ -1,9 +1,10 @@
 resource "resource_type" "resource_type" {
   tags = {
-    name = var.name
-    owner      = var.owner
-    createdBy  = "terraform"
-    modulePath = path.module
+    Name = var.name
+    Owner      = var.owner
+    CreatedBy  = "terraform"
+    ModulePath = path.module
     CWD        = path.cwd
+    Project = var.project
   }
 }
