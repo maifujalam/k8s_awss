@@ -2569,13 +2569,15 @@ repoServer:
   podLabels: {}
 
   # -- Resource limits and requests for the repo server pods
-  resources: {}
-  #  limits:
-  #    cpu: 50m
-  #    memory: 128Mi
-  #  requests:
-  #    cpu: 10m
-  #    memory: 64Mi
+  resources:
+    limits:
+      ephemeral-storage: "1024Mi"
+      cpu: 50m
+      memory: 128Mi
+    requests:
+      ephemeral-storage: "512Mi"
+      cpu: 10m
+      memory: 64Mi
 
   # Repo server container ports
   containerPorts:
