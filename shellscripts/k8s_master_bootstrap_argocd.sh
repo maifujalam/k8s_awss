@@ -59,7 +59,7 @@ printf "\nInstalling helloworld app ..\n"
 printf "\nInstalling ArgoCD...\n"
     su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd --create-namespace --namespace argo-cd'
 
-#printf "\nInstalling Argocd Apps ...\n"
-#    su - $USER -c'kubectl apply -f /vagrant/manifests/default-applications.yaml'
+printf "\nInstalling Argocd Apps ...\n"
+    su - $USER -c'kubectl apply -f '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/default-applications.yaml'
 
 printf "\n-------K8s master Initialized Successfully-----\n"

@@ -9,9 +9,9 @@ spec:
    namespace: default
    server: https://kubernetes.default.svc
  source:
-   repoURL: https://github.com/maifujalam/argocd
+   repoURL: https://github.com/maifujalam/k8s_aws.git
    targetRevision: HEAD
-   path: argocdApplications
+   path: k8s/argocdApplication
  syncPolicy:
    automated:
      prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
