@@ -9,6 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    chart: kubernetes-dashboard
     helm:
       valueFiles:
       - values1.yaml

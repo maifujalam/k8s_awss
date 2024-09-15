@@ -9,6 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    chart: cert-manager
     helm:
       valueFiles:
       - values.yaml

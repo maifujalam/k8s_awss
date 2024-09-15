@@ -9,9 +9,10 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    chart: metrics-server
     helm:
       valueFiles:
-      - values1.yaml
+      - values.yaml
     path: k8s/v1.30.4/manifests/metrics-server
     repoURL: https://github.com/maifujalam/argocd.git
     targetRevision: 3.12.1

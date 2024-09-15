@@ -99,6 +99,7 @@ app:
       # https://localhost:8443
       - localhost
       - dashboard.master.com
+      - dashboard.maifuj.com
     ingressClassName: nginx
     # Use only if your ingress controllers support default ingress classes.
     # If set to true ingressClassName will be ignored and not added to the Ingress resources.

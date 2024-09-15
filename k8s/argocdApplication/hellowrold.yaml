@@ -9,6 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    chart: hello-kubernetes
     helm:
       valueFiles:
       - values.yaml
