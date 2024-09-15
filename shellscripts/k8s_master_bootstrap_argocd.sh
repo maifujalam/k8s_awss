@@ -51,10 +51,6 @@ printf "\nInstalling ingress-nginx...\n"
 printf "\nCooling down for 30 seconds...\n"
   sleep 30
 
-####################### Install ingress-nginx ########################
-printf "\nInstalling helloworld app ..\n"
-   su - $USER -c "helm install helloworld '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/hello-kubernetes"
-
 ####################### Install Argocd ########################
 printf "\nInstalling ArgoCD...\n"
     su - $USER -c 'helm -n argo-cd install argo-cd '$PROJECT_PATH'/k8s/'$K8S_VERSION'/manifests/argo-cd --create-namespace --namespace argo-cd'
