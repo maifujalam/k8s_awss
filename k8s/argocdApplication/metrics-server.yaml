@@ -14,7 +14,7 @@ spec:
       valueFiles:
       - values.yaml
     path: k8s/v1.30.4/manifests/metrics-server
-    repoURL: https://github.com/maifujalam/argocd.git
+    repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 3.12.1
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.

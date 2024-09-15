@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: metrics-server
+    chart: tigera-operator
     helm:
       valueFiles:
       - values.yaml
