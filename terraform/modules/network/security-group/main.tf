@@ -11,10 +11,9 @@ resource "aws_security_group" "instance_sg" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks =  ["0.0.0.0/0"]
+      cidr_blocks = ["0.0.0.0/0"]
     }
   }
-  #
   #   # Allow traffic from Load Balancer
   #   ingress {
   #     description      = "Allow traffic from Load Balancer"
@@ -24,6 +23,13 @@ resource "aws_security_group" "instance_sg" {
   #     security_groups  = [var.alb_sg_id]  # Allow traffic from the ALB security group
   #   }
 
+  ingress {
+    description = "Allow traffic from Self"
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    self = true
+  }
   # Outbound Rules (Allow all traffic by default)
   egress {
     from_port = 0

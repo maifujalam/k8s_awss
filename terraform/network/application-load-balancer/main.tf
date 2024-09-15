@@ -4,4 +4,5 @@ module "application-load-balancer" {
   owner = var.owner
   name = var.name
   project = var.project
+  security_group_name = var.security_group_name
 }
