@@ -1,14 +1,13 @@
 # Self Manager Kubernetes on AWS
 
 ## Terraform Infra Setup:-
-
-1. Create 1 EC2 instance of master: terraform/launch-template-vms/rhel-vms-master
-2. Create 1 EC2 instance of worker: terraform/launch-template-vms/rhel-vms-worker
-3. Make sure you have existing VPC,Public Subnet,Internet Gateway,Route Table with making subnet available to internet using
+1. Create Security Group: terraform/network/security-group
+2. Create 1 EC2 instance of master: terraform/launch-template-vms/rhel-vms-master
+3. Create 1 EC2 instance of worker: terraform/launch-template-vms/rhel-vms-worker
+4. Make sure you have existing VPC,Public Subnet,Internet Gateway,Route Table with making subnet available to internet using
    Internet gateway (Public Subnet).
-4. Create NAT gateway with Elastic IP: terraform/network/nat-gateway
-5. Create Private route table: terraform/network/route-tables/private-route-table 
-6. Create Security Group: terraform/network/security-group
+5. Create NAT gateway with Elastic IP: terraform/network/nat-gateway
+6. Create Private route table: terraform/network/route-tables/private-route-table
 7. Create Application Load Balancer with above security-group:
    terraform/network/application-load-balancer
 8. Create target group,load_balancer_target_group_attachment and AWS load balancer listener on http:
@@ -16,6 +15,8 @@
 9. Create target group,load_balancer_target_group_attachment and AWS load balancer listener on https:
    terraform/network/target-group-https
 10. Create an ec2 role of s3 full access and assign to master and worker vms.
+11. Add the load balancer DNS to the Public route of *.maifuj.com.
+
 ## Kubernetes Cluster Setup
 
 1. Create 2 RHEL vms using terraform.

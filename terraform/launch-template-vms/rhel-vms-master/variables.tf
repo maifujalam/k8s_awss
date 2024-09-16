@@ -39,3 +39,6 @@ variable "subnet_name" {
 variable "vpc_name" {
   default = "default"
 }
+variable "security_group" {
+  default = "default-sg"
+}

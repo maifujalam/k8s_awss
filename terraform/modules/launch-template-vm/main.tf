@@ -31,4 +31,5 @@ resource "aws_instance" "vm" {
   instance_market_options {
     market_type = var.spot_instance? "spot" : null
   }
+  security_groups = [var.security_group]
 }

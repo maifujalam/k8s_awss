@@ -11,5 +11,6 @@ module "rhel-vms" {
   root_volume_size = var.root_volume_size
   instance_type = var.instance_type
   private_ip = var.private_ip
+  security_group = var.security_group
 }
 

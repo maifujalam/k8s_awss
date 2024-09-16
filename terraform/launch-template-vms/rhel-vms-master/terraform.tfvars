@@ -10,3 +10,4 @@ spot_instance = false
 instance_type = "t3a.medium"
 project = "k8s_aws"
 private_ip = "172.31.0.5" # Starting digit of private ip ( will increase last digit based on count value).
+security_group = "default-sg"

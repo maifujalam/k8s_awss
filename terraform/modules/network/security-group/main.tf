@@ -30,6 +30,14 @@ resource "aws_security_group" "instance_sg" {
     protocol    = "tcp"
     self = true
   }
+  ingress {
+    description = "Allow ICMP "
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    self = false
+  }
+
   # Outbound Rules (Allow all traffic by default)
   egress {
     from_port = 0
