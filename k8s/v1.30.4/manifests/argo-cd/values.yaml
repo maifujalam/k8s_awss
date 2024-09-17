@@ -2572,12 +2572,12 @@ repoServer:
   resources:
     limits:
       ephemeral-storage: "1024Mi"
-      cpu: 50m
-      memory: 128Mi
+      cpu: 7000m
+      memory: 700Mi
     requests:
       ephemeral-storage: "512Mi"
-      cpu: 10m
-      memory: 64Mi
+      cpu: 300m
+      memory: 300Mi
 
   # Repo server container ports
   containerPorts:
