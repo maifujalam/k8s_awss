@@ -54,4 +54,4 @@ sh 2_config_crictl.sh
 sh 3_configure_network.sh
 sh 4-configure_firealld_selinux.sh
 ########### Join Worker #######
-sudo kubeadm join --v=5 --config $PROJECT_PATH/$KUBERNETES_VERSION/kubeadm-join/join-default-worker-1.yaml
+sudo kubeadm join --v=5 --config $PROJECT_PATH/k8s/$KUBERNETES_VERSION/kubeadm-join/join-default-worker-1.yaml
