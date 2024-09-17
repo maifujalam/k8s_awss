@@ -1,5 +1,14 @@
 # Self Manager Kubernetes on AWS
 
+Self managed Kubernetes cluster on AWS with:- 
+  - ArgoCD
+  - Calico
+  - Metric Server
+
+Git Repository: git clone https://github.com/maifujalam/k8s_aws.git
+
+# Setup master Node:-
+
 ## Terraform Infra Setup:-
 1. Create Security Group: terraform/network/security-group
 2. Create 1 EC2 instance of master: terraform/launch-template-vms/rhel-vms-master
@@ -42,3 +51,8 @@
 15. Extract ArgoCD password: kubectl -n argo-cd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" |
    base64 -d for username admin
 
+# Setup Worker node:-
+1. Check worker is having connectivity and ssh into it: ping worker
+2. Clone Git Project repo: git clone https://github.com/maifujalam/k8s_aws.git
+2. copy packages to worker: scp -i ~/.ss/id_rsa -r packages ec2-user@worker:k8s/
+3. Install packages in worker: 
