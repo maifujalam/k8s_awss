@@ -50,3 +50,6 @@ kubeadm version
 ########## kubectl #######
 kubectl version
 printf "\nVerifying Binary Completed. \n"
+
+########### Join Worker #######
+sudo kubeadm join --v=5 --config $PROJECT_PATH/$KUBERNETES_VERSION/kubeadm-join/join-default-worker-1.yaml
