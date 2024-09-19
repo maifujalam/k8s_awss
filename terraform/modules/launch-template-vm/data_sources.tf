@@ -17,3 +17,9 @@ data "aws_subnet" "selected_subnet" {
     values = [var.subnet_name]  # Adjust this to match your target subnet's tag
   }
 }
+data "aws_security_group" "selected_security_group" {
+  filter {
+    name = "tag:Name"
+    values = [var.security_group]
+  }
+}

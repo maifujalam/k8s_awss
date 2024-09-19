@@ -29,7 +29,8 @@ resource "aws_instance" "vm" {
     CWD        = path.cwd
   }
   instance_market_options {
-    market_type = var.spot_instance? "spot" : null
+    market_type = var.spot_instance == true ? "spot" : null
   }
-  security_groups = [var.security_group]
+#   security_groups = [var.security_group] # Ony when using default Security group
+  vpc_security_group_ids = [data.aws_security_group.selected_security_group.id]
 }

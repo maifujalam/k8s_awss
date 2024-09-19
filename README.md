@@ -1,9 +1,10 @@
 # Self Manager Kubernetes on AWS
 
 Self managed Kubernetes cluster on AWS with:- 
-  - ArgoCD
   - Calico
-  - Metric Server
+  - Cert Manager
+  - Nginx Ingress
+  - ArgoCD
 
 Git Repository: git clone https://github.com/maifujalam/k8s_aws.git
 
