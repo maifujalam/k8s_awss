@@ -35,7 +35,7 @@ resource "aws_security_group" "instance_sg" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    self = true
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Outbound Rules (Allow all traffic by default)

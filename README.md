@@ -12,8 +12,8 @@ Git Repository: git clone https://github.com/maifujalam/k8s_aws.git
 
 ## Terraform Infra Setup:-
 1. Create Security Group: terraform/network/security-group
-2. Create 1 EC2 instance of master: terraform/launch-template-vms/rhel-vms-master
-3. Create 1 EC2 instance of worker: terraform/launch-template-vms/rhel-vms-worker
+2. Create 1 EC2 instance of master (RHEL): terraform/launch-template-vms/rhel-vms-master
+3. Create 1 EC2 instance of worker(RHEL): terraform/launch-template-vms/rhel-vms-worker
 4. Make sure you have existing VPC,Public Subnet,Internet Gateway,Route Table with making subnet available to internet using
    Internet gateway (Public Subnet).
 5. Create NAT gateway with Elastic IP: terraform/network/nat-gateway
@@ -30,7 +30,7 @@ Git Repository: git clone https://github.com/maifujalam/k8s_aws.git
 ## Kubernetes Cluster Setup
 
 1. Create 2 RHEL vms using terraform.
-2. SSH into vm and install ansible: sudo yum -y update && sudo yum -y install git wget unzip tree ansible-core
+2. SSH into vm and install ansible: sudo yum -y update && sudo yum -y install git wget unzip tree ansible-core (for ubuntu use apt)
 3. SSH into worker node by:-
    a. SSH into master node.
    b. Create file for private key file: vi ~/.ssh/id_rsa
