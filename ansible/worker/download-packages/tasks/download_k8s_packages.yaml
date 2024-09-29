@@ -23,7 +23,7 @@
 - name: Add kubernetes GPG key
   become: true
   shell: |
-    gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg /tmp/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/kubernetes-gpg.asc
+    gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg  /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/kubernetes-gpg.asc
   when: not file_exists.stat.exists
 
 - name: Add Kubernetes repository to sources list
