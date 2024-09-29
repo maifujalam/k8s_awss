@@ -1,5 +1,5 @@
 ---
 # tasks file for bootstrap_k8s_master
 
-- name: Setup maaster node
+- name: Setup master node
   include_tasks: setup_master.yaml
