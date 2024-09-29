@@ -1,6 +1,7 @@
 locals {
   aws_subnet=var.subnet_name
 }
+
 resource "aws_instance" "vm" {
   count = var.vm_count
   launch_template {
@@ -33,4 +34,5 @@ resource "aws_instance" "vm" {
   }
 #   security_groups = [var.security_group] # Ony when using default Security group
   vpc_security_group_ids = [data.aws_security_group.selected_security_group.id]
+  iam_instance_profile = var.iam_instance_profile
 }

@@ -41,3 +41,6 @@ variable "vpc_name" {
 variable "security_group" {
   default = "default-sg"
 }
+variable "iam_instance_profile" {
+  default = null
+}

@@ -42,3 +42,6 @@ variable "security_group" {
 variable "private_ip" {
   default = "172.168.16.10"
 }
+variable "iam_instance_profile" {
+  default = null
+}

@@ -2,7 +2,7 @@
 USER=ec2-user
 PROJECT_PATH=/home/$USER/k8s_aws
 FILE=/home/$USER/.kube/config
-K8S_VERSION=v1.30.4
+K8S_VERSION=v1.31.1
 
 echo $FILE
 

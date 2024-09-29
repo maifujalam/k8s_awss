@@ -13,5 +13,6 @@ module "ubuntu-vms" {
   instance_type    = var.instance_type
   private_ip       = var.private_ip
   security_group   = var.security_group
+  iam_instance_profile = var.iam_instance_profile
 }
 

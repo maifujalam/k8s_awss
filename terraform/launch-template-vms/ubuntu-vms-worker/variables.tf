@@ -36,3 +36,12 @@ variable "subnet_name" {
 variable "vpc_name" {
   default = "default"
 }
+variable "private_ip" {
+  default = "172.168.16.69"
+}
+variable "security_group" {
+  default = "default-sg"
+}
+variable "iam_instance_profile" {
+  default = null
+}
