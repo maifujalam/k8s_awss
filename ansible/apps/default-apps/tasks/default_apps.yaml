@@ -1,0 +1,27 @@
+#- name: Add private Helm repository
+#  community.general.helm_repository:
+#    name: public-helm-repository    # Name of the repo
+#    repo_url: "https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/" # Private repo URL
+
+- name: Install helm s3 plugin
+  shell: |
+     helm plugin install https://github.com/hypnoglow/helm-s3.git --version 0.16.2;
+#     helm s3 init http://public-helm-repository-2023102309500050850000000;
+#     helm repo add public-helm-repository s3://public-helm-repository-20231023095000508500000001
+- name: Add Red Hat Helm charts repository
+  kubernetes.core.helm_repository:
+    name: public-helm-repository
+    repo_url: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/ #
+
+- name: Update repository
+  command: helm repo update
+
+- name: Install calico
+  kubernetes.core.helm:
+    name: calico
+    chart_ref: public-helm-repository/tigera-operator
+    release_namespace: tigera-operator
+    create_namespace: true
+    chart_version: 3.26.1
+    values_files:
+      - /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/manifests/tigera-operator/values.yaml

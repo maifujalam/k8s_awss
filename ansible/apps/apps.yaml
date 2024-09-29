@@ -1,0 +1,11 @@
+---
+- hosts: k8s_master
+  become: false
+  vars:
+    PROJECT_PATH: k8s_aws  # File will be  created at home directory
+    KUBERNETES_MAJOR_VERSION: v1.30
+    KUBERNETES_VERSION: 1.30.5  # add 'v' in at prefix whenever required.
+    PACKAGE_DIRECTORY: packages
+    USER: ubuntu
+  roles:
+    - default-apps
