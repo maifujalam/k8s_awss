@@ -12,4 +12,4 @@
   roles:
     - download-packages
     - configure_node
-    - bootstrap_k8s_master
+    - bootstrap_k8s_worker
