@@ -1,3 +1,14 @@
+- name: Clone project code
+  git:
+    repo: https://github.com/maifujalam/k8s_aws.git
+    dest: ~/k8s_aws
+    clone: yes
+
+- name: Copy Worker inventory file
+  template:
+    src:
+    dest:
+
 - name: Pre-pull kubernetes images v{{KUBERNETES_VERSION}}
   become: true
   shell: bash /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/5_kubernetes_images.sh
