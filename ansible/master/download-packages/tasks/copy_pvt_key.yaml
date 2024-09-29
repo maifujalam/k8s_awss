@@ -3,3 +3,4 @@
   copy:
     src: ~/.ssh/id_rsa
     dest: ~/.ssh/id_rsa
+    mode: "400"

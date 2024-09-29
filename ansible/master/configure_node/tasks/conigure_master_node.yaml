@@ -1,8 +1,3 @@
-- name: Clone project code
-  git:
-    repo: https://github.com/maifujalam/k8s_aws.git
-    dest: ~/k8s_aws
-    clone: yes
 
 - name: Create ansible directory
   become: true
@@ -21,6 +16,9 @@
     dest: ~/ssh_worker
     content: "ssh -o ServerAliveInterval=5 -i ~/.ssh/id_rsa ubuntu@{{WORKER_NODE_IP}}"
 
+- name: Pre-pull kubernetes images v{{KUBERNETES_VERSION}}
+  become: true
+  shell: bash /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/5_kubernetes_images.sh
 
 - name: Configure kubectl
   blockinfile:
