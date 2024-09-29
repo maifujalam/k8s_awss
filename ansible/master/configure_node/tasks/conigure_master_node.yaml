@@ -4,10 +4,22 @@
     dest: ~/k8s_aws
     clone: yes
 
+- name: Create ansible directory
+  become: true
+  file:
+    path: /etc/ansible/
+    state: directory
+    mode: "777"
+
 - name: Copy Worker inventory file
   template:
-    src:
-    dest:
+    src: inventory.ini.j2
+    dest: /etc/ansible/inventory.ini
+
+- name: Make ssh login command in master home directory
+  copy:
+    dest: ~/ssh_worker
+    content: "ssh -o ServerAliveInterval=5 -i ~/.ssh/id_rsa ubuntu@{{WORKER_NODE_IP}}"
 
 - name: Pre-pull kubernetes images v{{KUBERNETES_VERSION}}
   become: true
