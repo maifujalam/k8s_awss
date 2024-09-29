@@ -6,5 +6,5 @@
 - name: Configure Network
   include_tasks: configure_network.yaml
 
-- name: Configure master node
+- name: Configure worker node
   include_tasks: configure_worker_node.yaml
