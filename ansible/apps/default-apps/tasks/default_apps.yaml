@@ -2,12 +2,16 @@
 #  community.general.helm_repository:
 #    name: public-helm-repository    # Name of the repo
 #    repo_url: "https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/" # Private repo URL
+- name: Check helm s3 plugin version
+  shell: helm s3 version
+  register: r1
+  ignore_errors: true
 
 - name: Install helm s3 plugin
   shell: |
      helm plugin install https://github.com/hypnoglow/helm-s3.git --version 0.16.2;
-#     helm s3 init http://public-helm-repository-2023102309500050850000000;
-#     helm repo add public-helm-repository s3://public-helm-repository-20231023095000508500000001
+  when: r1.rc != 0
+
 - name: Add Red Hat Helm charts repository
   kubernetes.core.helm_repository:
     name: public-helm-repository
@@ -15,6 +19,11 @@
 
 - name: Update repository
   command: helm repo update
+
+- name: Check if calico already installed
+  shell: helm list -A | grep calico
+  register: r2
+  ignore_errors: true
 
 - name: Install calico
   kubernetes.core.helm:
@@ -24,4 +33,41 @@
     create_namespace: true
     chart_version: 3.26.1
     values_files:
-      - /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/manifests/tigera-operator/values.yaml
+      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/tigera-operator/values.yaml
+  when: r2.rc != 0
+
+- name: Check if cert-manager already installed
+  shell: helm list -A | grep cert-manager
+  register: r3
+  ignore_errors: true
+
+- name: Install cert-manager
+  kubernetes.core.helm:
+    name: cert-manager
+    chart_ref: public-helm-repository/cert-manager
+    release_namespace: cert-manager
+    create_namespace: true
+    chart_version: 1.15.3-aws
+    values_files:
+      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/cert-manager/values.yaml
+  when: r3.rc != 0
+
+#- name: Install ingress-nginx
+#  kubernetes.core.helm:
+#    name: calico
+#    chart_ref: public-helm-repository/tigera-operator
+#    release_namespace: tigera-operator
+#    create_namespace: true
+#    chart_version: 3.26.1
+#    values_files:
+#      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/tigera-operator/values.yaml
+#
+#- name: Install argocd
+#  kubernetes.core.helm:
+#    name: calico
+#    chart_ref: public-helm-repository/tigera-operator
+#    release_namespace: tigera-operator
+#    create_namespace: true
+#    chart_version: 3.26.1
+#    values_files:
+#      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/tigera-operator/values.yaml
