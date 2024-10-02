@@ -43,8 +43,8 @@ nginx-ingress-controller
 3. helm search repo nginx
 4. helm pull ingress-nginx/ingress-nginx --version=4.11.2 --untar
 5. kubectl create ns ingress-nginx
-6. helm install ingress-nginx ingress-nginx -n ingress-nginx 
-7. helm uninstall ingress-nginx -n ingress-nginx
+6. helm -n ingress-nginx install ingress-nginx ingress-nginx --create-namespace
+7. helm uninstall ingress-nginx -n ingress-nginx  && kubectl delete ns ingress-nginx --force
 8. External load balancer IP: 192.168.56.5
 
 kubernetes-dashboard:
