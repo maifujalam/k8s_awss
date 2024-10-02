@@ -48,6 +48,10 @@
       - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/cert-manager/values.yaml
   when: r3.rc != 0
 
+- name: Install self signed certs
+  shell: kubectl apply -f /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/cert-manager/self-sign-issuer.yaml
+  when: r3.rc != 0
+
 - name: Check if ingress-nginx already installed
   shell: helm list -A | grep ingress-nginx
   register: r4
@@ -76,7 +80,7 @@
 - name: Install argo-cd
   kubernetes.core.helm:
     name: argo-cd
-    chart_ref: public-helm-repository/argo-cd
+    chart_ref: /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/argo-cd
     release_namespace: argo-cd
     create_namespace: true
     chart_version: 7.4.3-aws
