@@ -111,7 +111,7 @@ Argocd:
 1. helm repo add argo https://argoproj.github.io/argo-helm
 2. helm repo update
 3. helm search repo argo-cd
-4. helm pull argo/argo-cd --version 7.4.3 --untar
+4. helm pull argo/argo-cd --version 7.6.7 --untar
 5. helm -n argo-cd install argo-cd argo-cd --create-namespace
 6. helm -n argo-cd uninstall argo-cd && kubectl delete ns argo-cd --force
 7. helm -n argo-cd upgrade argo-cd argo-cd
