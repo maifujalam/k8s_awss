@@ -1,6 +1,6 @@
 #!/bin/bash
 INVENTORY_FILE='/etc/ansible/inventory.ini'
-IP=13.127.195.148
+IP=13.201.67.177
 K8S_GROUP=k8s_master # For master use group name k8s_master for worker use group name k8s_worker
 
 # Check if the file exists
