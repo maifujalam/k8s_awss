@@ -27,7 +27,7 @@ Cert-manager:-
 3. helm search repo cert-manager
 4. helm pull jetstack/cert-manager --version=1.15.3 --untar
 5. kubectl create ns cert-manager
-6. helm install cert-manager cert-manager -n cert-manager
+6. helm -n cert-manager install cert-manager cert-manager --create-namespace
 7. helm -n cert-manager upgrade cert-manager
 8. helm -n cert-manager uninstall cert-manager
 

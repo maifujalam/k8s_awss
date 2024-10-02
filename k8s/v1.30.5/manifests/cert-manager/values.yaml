@@ -1265,9 +1265,9 @@ startupapicheck:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
-#     - key: node-role.kubernetes.io/control-plane
-#       effect: NoSchedule
+  tolerations:
+     - key: node-role.kubernetes.io/control-plane
+       effect: NoSchedule
 
   # Optional additional labels to add to the startupapicheck Pods.
   podLabels: {}
