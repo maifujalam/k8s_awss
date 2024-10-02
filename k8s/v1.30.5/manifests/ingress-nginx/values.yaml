@@ -822,7 +822,7 @@ controller:
         # -- Enable 'networkPolicy' or not
         enabled: false
       nodeSelector:
-        kubernetes.io/os: linux
+        node-role.kubernetes.io/control-plane: ""
       tolerations:
          - key: node-role.kubernetes.io/control-plane
            effect: NoSchedule
