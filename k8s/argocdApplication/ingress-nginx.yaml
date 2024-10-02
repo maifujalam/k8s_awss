@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    path: k8s/v1.30.4/manifests/ingress-nginx
+    path: k8s/v1.30.5/manifests/ingress-nginx
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 4.11.2-aws
   syncPolicy:
