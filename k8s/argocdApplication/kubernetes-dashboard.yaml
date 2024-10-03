@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    path: k8s/v1.30.4/manifests/kubernetes-dashboard
+    path: k8s/v1.30.5/manifests/kubernetes-dashboard
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 7.5.0
   syncPolicy:
