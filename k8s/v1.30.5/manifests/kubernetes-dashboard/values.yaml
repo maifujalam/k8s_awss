@@ -97,8 +97,6 @@ app:
     hosts:
       # Keep 'localhost' host only if you want to access Dashboard using 'kubectl port-forward ...' on:
       # https://localhost:8443
-      - localhost
-      - dashboard.master.com
       - dashboard.maifuj.com
     ingressClassName: nginx
     # Use only if your ingress controllers support default ingress classes.
