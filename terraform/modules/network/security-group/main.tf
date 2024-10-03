@@ -24,10 +24,10 @@ resource "aws_security_group" "instance_sg" {
   #   }
 
   ingress {
-    description = "Allow traffic from Self"
+    description = "Allow traffic from Self."
     from_port   = 0
-    to_port     = 65535
-    protocol    = "tcp"
+    to_port     = 0
+    protocol    = "-1"
     self = true
   }
   ingress {
