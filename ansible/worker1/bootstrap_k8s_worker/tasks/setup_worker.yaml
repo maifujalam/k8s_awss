@@ -1,7 +1,7 @@
 - name: Copy worker join templates
   template:
     src: join-default-worker.yaml.j2
-    dest: /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/join-default-worker.yaml.j2
+    dest: /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/join-default-worker.yaml
 
 - name: Reset worker kubernetes
   become: true

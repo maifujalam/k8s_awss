@@ -11,7 +11,7 @@
   lineinfile:
     path: /etc/hosts
     regexp: '^worker='
-    line: "{{WORKER_NODE_IP}} worker"
+    line: "{{WORKER_NODE_IP}} worker1"
     state: present
 
 - name: Reboot the system
