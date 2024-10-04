@@ -15,7 +15,7 @@ spec:
       - values.yaml
     path: k8s/v1.30.5/manifests/hello-kubernetes
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
-    targetRevision: *
+    targetRevision: HEAD
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
       prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
