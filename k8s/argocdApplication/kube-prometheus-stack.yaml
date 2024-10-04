@@ -11,7 +11,6 @@ spec:
   source:
     chart: kube-prometheus-stack
     helm:
-      passCredentials: false
       valueFiles:
       - values.yaml
     path: k8s/v1.30.5/manifests/kube-prometheus-stack
