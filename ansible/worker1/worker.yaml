@@ -1,5 +1,5 @@
 ---
-- hosts: k8s_master
+- hosts: k8s_worker
   become: false
   vars:
     PROJECT_PATH: k8s_aws  # File will be  created at home directory
@@ -8,8 +8,8 @@
     PACKAGE_DIRECTORY: packages
     USER: ubuntu
     MASTER_NODE_IP: 172.31.0.5
-    WORKER_NODE_IP: 172.31.0.69
+    WORKER_NODE_IP: 172.31.0.70
   roles:
-#    - download-packages
+    - download-packages
     - configure_node
-#    - bootstrap_k8s_master
+    - bootstrap_k8s_worker

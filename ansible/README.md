@@ -27,3 +27,6 @@ EOF
 2. List all the inventory: ansible-inventory --list
 3. Ping all hosts: ansible k8s_master -m ping
 4. Check machine uptime:  ansible k8s_master -b -m command -a 'uptime' [b: become]
+
+Extract kubernetes dashboard token:-
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d > dashboard_token.txt
