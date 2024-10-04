@@ -410,7 +410,7 @@ alertmanager:
     ## Hosts must be provided if Ingress is enabled.
     ##
     hosts:
-      - alertmanager.master.com
+      - alertmanager.maifuj.com
 
     ## Paths to use for ingress rules - one path should match the alertmanagerSpec.routePrefix
     ##
@@ -424,10 +424,10 @@ alertmanager:
     ## TLS configuration for Alertmanager Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls:
-     - secretName: alertmanager-general-tls
-       hosts:
-       - alertmanager.master.com
+    tls: []
+#     - secretName: alertmanager-general-tls
+#       hosts:
+#       - alertmanager.maifuj.com
 
   ## Configuration for Alertmanager secret
   ##
@@ -467,10 +467,10 @@ alertmanager:
 
     ## Secret name containing the TLS certificate for alertmanager per replica ingress
     ## Secret must be manually created in the namespace
-    tlsSecretName:
-     - secretName: alertmanager-general-tls
-       hosts:
-       - alertmanager.master.com
+    tlsSecretName: []
+#     - secretName: alertmanager-general-tls
+#       hosts:
+#       - alertmanager.maifuj.com
 
     ## Separated secret for each per replica Ingress. Can be used together with cert-manager
     ##
@@ -1021,7 +1021,7 @@ grafana:
     # hosts:
     #   - grafana.domain.com
     hosts:
-      - grafana.master.com
+      - grafana.maifuj.com
 
     ## Path for grafana ingress
     path: /
@@ -1029,10 +1029,10 @@ grafana:
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls:
-     - secretName: grafana-general-tls
-       hosts:
-       - grafana.master.com
+    tls: []
+#     - secretName: grafana-general-tls
+#       hosts:
+#       - grafana.maifuj.com
 
   # # To make Grafana persistent (Using Statefulset)
   # #
@@ -3293,7 +3293,7 @@ prometheus:
     # hosts:
     #   - prometheus.domain.com
     hosts:
-      - prometheus.master.com
+      - prometheus.maifuj.com
 
     ## Paths to use for ingress rules - one path should match the prometheusSpec.routePrefix
     ##
@@ -3307,10 +3307,10 @@ prometheus:
     ## TLS configuration for Prometheus Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls:
-       - secretName: prometheus-general-tls
-         hosts:
-           - prometheus.master.com
+    tls: []
+#       - secretName: prometheus-general-tls
+#         hosts:
+#           - prometheus.maifuj.com
 
   ## Configuration for creating an Ingress that will map to each Prometheus replica service
   ## prometheus.servicePerReplica must be enabled
