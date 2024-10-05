@@ -21,7 +21,6 @@ ingress:
   secretName: "helloworld-secret"
 
 
-
 service:
   type: ClusterIP
   port: 80
