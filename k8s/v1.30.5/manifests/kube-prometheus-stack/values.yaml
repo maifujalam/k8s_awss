@@ -1003,7 +1003,7 @@ grafana:
     ## Annotations for Grafana Ingress
     ##
     annotations:
-      cert-manager.io/issuer: selfsigned-cluster-issuer
+      cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
