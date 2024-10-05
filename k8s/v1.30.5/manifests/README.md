@@ -132,8 +132,14 @@ Rancher Local path provisioner: -
    helm install local-path-storage public-helm-repository/localpath --version=1.2.0
 5. helm -n local-path-storage upgrade local-path-storage public-helm-repository/localpath --version=1.2.0
 
+Jenkins with agent:-
+1. helm repo add jenkins https://charts.jenkins.io
+2. helm repo update
+3. helm search repo jenkins
+4. helm pull jenkins/jenkins --version 5.7.3 --untar
+5. 
 
 Helm Package:-
 1. Build number is based on Char.yaml->version
 2. Helm package: h package hello-kubernetes
-3. 
+3. helm 
