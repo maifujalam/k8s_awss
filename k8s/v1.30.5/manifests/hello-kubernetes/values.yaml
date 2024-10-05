@@ -39,7 +39,13 @@ deployment:
   nodeSelector:
     kubernetes.io/os: linux
     kubernetes.io/arch: amd64
-  resources: {}
+  resources:
+    limits:
+      cpu: 10m
+      memory: 100Mi
+    requests:
+      cpu: 5m
+      memory: 50Mi
 
   tolerations:
     - key: node-role.kubernetes.io/control-plane
