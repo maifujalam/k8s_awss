@@ -137,7 +137,7 @@ Jenkins with agent:-
 2. helm repo update
 3. helm search repo jenkins
 4. helm pull jenkins/jenkins --version 5.7.3 --untar
-5. 
+5. helm -n jenkins install jenkins jenkins --create-namespace
 
 Helm Package:-
 1. Build number is based on Char.yaml->version
