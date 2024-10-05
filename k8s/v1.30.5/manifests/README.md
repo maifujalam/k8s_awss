@@ -139,6 +139,7 @@ Jenkins with agent:-
 4. helm pull jenkins/jenkins --version 5.7.3 --untar
 5. helm -n jenkins install jenkins jenkins --create-namespace
 6. helm -n jenkins uninstall jenkins
+7. Username: admin  pass_exract: kubectl exec --namespace jenkins -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password && echo
 
 Helm Package:-
 1. Build number is based on Char.yaml->version
