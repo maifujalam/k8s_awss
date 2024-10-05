@@ -12,8 +12,7 @@ spec:
     chart: kube-prometheus-stack
     helm:
       valueFiles:
-      - values.yaml
-    path: k8s/v1.30.5/manifests/kube-prometheus-stack
+        - https://raw.githubusercontent.com/maifujalam/k8s_aws/refs/heads/master/k8s/v1.30.5/manifests/kube-prometheus-stack/values.yaml
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 61.8.0
   syncPolicy:
