@@ -1,0 +1,13 @@
+- name: Copy worker join templates
+  template:
+    src: join-default-worker1.yaml.j2
+    dest: /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/join-default-worker1.yaml
+
+- name: Reset worker kubernetes
+  become: true
+  shell: kubeadm reset --force
+
+- name: Join cluster
+  become: true
+  shell:  kubeadm join --config /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/join-default-worker1.yaml
+
