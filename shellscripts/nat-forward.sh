@@ -8,9 +8,11 @@ sudo sysctl --system
 sudo iptables -t nat -A POSTROUTING -o enX0 -j MASQUERADE
 
 # make IP table persistent
+sudo /sbin/iptables -F FORWARD
+
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
 
-sudo iptables -t nat
+sudo iptables -t nat -L
 
 # Disable source destination  check for NAT instance: https://docs.aws.amazon.com/vpc/latest/userguide/work-with-nat-instances.html#EIP_Disable_SrcDestCheck
