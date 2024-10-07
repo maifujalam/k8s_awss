@@ -5,6 +5,8 @@ EOF
 # Apply sysctl params without reboot
 sudo sysctl --system
 
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
 # make IP table persistent
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
