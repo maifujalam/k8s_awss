@@ -5,10 +5,12 @@ EOF
 # Apply sysctl params without reboot
 sudo sysctl --system
 
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o enX0 -j MASQUERADE
 
 # make IP table persistent
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
+
+sudo iptables -t nat
 
 # Disable source destination  check for NAT instance: https://docs.aws.amazon.com/vpc/latest/userguide/work-with-nat-instances.html#EIP_Disable_SrcDestCheck
