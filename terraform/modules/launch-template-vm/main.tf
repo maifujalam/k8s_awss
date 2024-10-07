@@ -35,4 +35,5 @@ resource "aws_instance" "vm" {
 #   security_groups = [var.security_group] # Ony when using default Security group
   vpc_security_group_ids = [data.aws_security_group.selected_security_group.id]
   iam_instance_profile = var.iam_instance_profile
+  source_dest_check = var.source_dest_check
 }
