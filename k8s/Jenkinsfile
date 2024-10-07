@@ -1,0 +1,81 @@
+pipeline {
+    agent any
+
+    environment {
+        HELM_CHART_DIR = 'helm-chart-directory'
+        HELM_VALUES_FILE = 'values.yaml'
+        DOCKER_IMAGE_TAG = 'latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from SCM (Git, etc.)
+                checkout scm
+            }
+        }
+
+        stage('Check for Changes in values.yaml') {
+            steps {
+                script {
+                    // Check if the values.yaml file has been modified
+                    def changes = sh(script: "git diff --name-only HEAD HEAD~1", returnStdout: true).trim()
+
+                    if (changes.contains(HELM_CHART_DIR + '/' + HELM_VALUES_FILE)) {
+                        echo "Changes detected in ${HELM_VALUES_FILE}. Proceeding with Helm chart build."
+                        currentBuild.result = 'SUCCESS'
+                    } else {
+                        echo "No changes detected in ${HELM_VALUES_FILE}. Skipping Helm chart build."
+                        currentBuild.result = 'ABORTED'
+                        error("No changes in Helm values.yaml. Skipping the build.")
+                    }
+                }
+            }
+        }
+
+        stage('Build Helm Chart') {
+            when {
+                expression {
+                    // Proceed only if the previous step was successful
+                    return currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                script {
+                    // Build and package the Helm chart
+                    sh """
+                        helm lint ${HELM_CHART_DIR}
+                        helm package ${HELM_CHART_DIR}
+                    """
+                }
+            }
+        }
+
+        stage('Push Helm Chart') {
+            when {
+                expression {
+                    return currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                script {
+                    // Push the packaged chart to a Helm repository (if required)
+                    // Replace this with actual commands if you're pushing to a repository
+                    echo "Pushing Helm chart to repository"
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline finished"
+        }
+        failure {
+            echo "Pipeline failed"
+        }
+        success {
+            echo "Helm chart build successful"
+        }
+    }
+}
