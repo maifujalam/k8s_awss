@@ -22,7 +22,7 @@ resource "aws_instance" "vm" {
     delete_on_termination = true
   }
   tags = {
-    Name =  "${var.instance_name}-${count.index+1}"
+    Name =  var.instance_name
     Owner      = var.owner
     project = var.project
     createdBy  = "terraform"
@@ -36,4 +36,7 @@ resource "aws_instance" "vm" {
   vpc_security_group_ids = [data.aws_security_group.selected_security_group.id]
   iam_instance_profile = var.iam_instance_profile
   source_dest_check = var.source_dest_check
+  lifecycle {
+    ignore_changes = [instance_market_options,associate_public_ip_address]
+  }
 }

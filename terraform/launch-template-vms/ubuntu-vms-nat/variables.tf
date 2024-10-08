@@ -45,3 +45,6 @@ variable "private_ip" {
 variable "iam_instance_profile" {
   default = null
 }
+variable "elastic_ip" {
+  default = "default-eip"
+}

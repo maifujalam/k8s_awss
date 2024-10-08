@@ -16,3 +16,6 @@ output "private_ssh_commands" {
     format("ssh -o ServerAliveInterval=5 -i ~/.ssh/id_rsa ubuntu@%s", ip)
   ]
 }
+output "elastic_ip" {
+  value = aws_eip_association.attach_eip.public_ip
+}

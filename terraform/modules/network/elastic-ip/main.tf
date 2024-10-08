@@ -1,6 +1,6 @@
 resource "aws_eip" "nat-ip" {
 #   instance = "i-0e25a391a1200fdfa"
-  instance = data.aws_instances.nat-instance.ids[0]
+#   instance = data.aws_instances.nat-instance.ids[0]
   domain = "vpc"
   tags = {
     Name       = var.name
