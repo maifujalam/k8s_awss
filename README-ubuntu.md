@@ -14,3 +14,4 @@ To create Ubuntu NAT Instance [ https://docs.aws.amazon.com/vpc/latest/userguide
 7. Update the NAT instance  Security group with:- 
    Inbound: 22,80,443,
    Outbounbd: 8,443 
+
