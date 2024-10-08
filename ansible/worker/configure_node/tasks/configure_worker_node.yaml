@@ -15,6 +15,7 @@
     state: present
 
 - name: Update hostname
+  become: true
   hostname:
     name: worker
 
