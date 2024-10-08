@@ -53,6 +53,10 @@
     line: "{{WORKER_NODE_IP}} worker"
     state: present
 
+- name: Update hostname
+  hostname:
+    name: master
+
 - name: Reboot the system
   become: true
   reboot:
