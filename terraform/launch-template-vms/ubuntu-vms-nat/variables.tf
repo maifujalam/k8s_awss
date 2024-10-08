@@ -48,3 +48,6 @@ variable "iam_instance_profile" {
 variable "elastic_ip" {
   default = "default-eip"
 }
+variable "source_dest_check" {
+  default = true
+}

@@ -14,9 +14,10 @@ module "ubuntu-vms" {
   private_ip           = var.private_ip
   security_group       = var.security_group
   iam_instance_profile = var.iam_instance_profile
+  source_dest_check    = var.source_dest_check
 }
 resource "aws_eip_association" "attach_eip" {
-  depends_on = [module.ubuntu-vms ]
+  depends_on = [module.ubuntu-vms]
   instance_id   = data.aws_instances.nat-instance.ids[0]
   allocation_id = data.aws_eip.get-eip.id
 }
