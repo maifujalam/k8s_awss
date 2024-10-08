@@ -2625,7 +2625,7 @@ repoServer:
       memory: 1000Mi
     requests:
       ephemeral-storage: "512Mi"
-      cpu: 300m
+      cpu: 100m
       memory: 300Mi
 
   # Repo server container ports
