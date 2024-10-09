@@ -1,8 +1,11 @@
-#- name: Clone project code
-#  git:
-#    repo: https://github.com/maifujalam/k8s_aws.git
-#    dest: ~/k8s_aws
-#    clone: yes
+- name: Clean up previuous project
+  shell: rm -rvf ~/k8s_aws
+
+- name: Clone project code
+  git:
+    repo: https://github.com/maifujalam/k8s_aws.git
+    dest: ~/k8s_aws
+    clone: yes
 
 - name: Create package folder
   file:
