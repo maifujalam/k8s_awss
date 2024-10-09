@@ -13,7 +13,7 @@
     block: |
       source <(argocd completion bash)
       alias a=argocd
-      complete -o default -F __start_kubectl a
+      complete -o default -F __start_argocd a
 
 
 - name: Download the K9s binary
