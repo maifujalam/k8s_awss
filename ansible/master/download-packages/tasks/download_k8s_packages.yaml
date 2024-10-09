@@ -1,4 +1,4 @@
-- name: Clean up previuous project
+- name: Clean up previous project
   shell: rm -rvf ~/k8s_aws
 
 - name: Clone project code

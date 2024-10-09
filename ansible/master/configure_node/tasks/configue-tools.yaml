@@ -15,6 +15,13 @@
       alias a=argocd
       complete -o default -F __start_argocd a
 
+- name: Configure kubectl
+  blockinfile:
+    path: ~/.bashrc
+    block: |
+      source <(kubectl completion bash)
+      alias k=kubectl
+      complete -o default -F __start_kubectl k
 
 - name: Download the K9s binary
   ansible.builtin.get_url:
