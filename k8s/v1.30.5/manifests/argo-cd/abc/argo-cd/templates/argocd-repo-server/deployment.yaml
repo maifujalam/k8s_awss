@@ -301,13 +301,13 @@ spec:
           failureThreshold: 3
         resources:
           limits:
-            cpu: 7000m
+            cpu: 1000m
             ephemeral-storage: 1024Mi
-            memory: 700Mi
+            memory: 1000Mi
           requests:
-            cpu: 300m
+            cpu: 100m
             ephemeral-storage: 512Mi
-            memory: 300Mi
+            memory: 100Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -328,13 +328,13 @@ spec:
         name: copyutil
         resources:
           limits:
-            cpu: 7000m
+            cpu: 1000m
             ephemeral-storage: 1024Mi
-            memory: 700Mi
+            memory: 1000Mi
           requests:
-            cpu: 300m
+            cpu: 100m
             ephemeral-storage: 512Mi
-            memory: 300Mi
+            memory: 100Mi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
