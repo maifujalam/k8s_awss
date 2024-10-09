@@ -1,8 +1,8 @@
-- name: Clone project code
-  git:
-    repo: https://github.com/maifujalam/k8s_aws.git
-    dest: ~/k8s_aws
-    clone: yes
+#- name: Clone project code
+#  git:
+#    repo: https://github.com/maifujalam/k8s_aws.git
+#    dest: ~/k8s_aws
+#    clone: yes
 
 - name: Create package folder
   file:
