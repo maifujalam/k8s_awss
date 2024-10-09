@@ -4,6 +4,7 @@ module "target-group-http" {
   owner = var.owner
   name = var.name
   project = var.project
+  instance_name = var.instance_name
   port = var.port
   protocol = var.protocol
   health_check_path = var.health_check_path

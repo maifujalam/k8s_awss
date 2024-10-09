@@ -14,5 +14,6 @@ module "ubuntu-vms" {
   private_ip       = var.private_ip
   security_group = var.security_group
   iam_instance_profile = var.iam_instance_profile
+  source_dest_check = var.source_dest_check
 }
 

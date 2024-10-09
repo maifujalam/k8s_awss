@@ -23,3 +23,6 @@ variable "protocol" {
 variable "health_check_path" {
   default = "/healthz"
 }
+variable "instance_name" {
+  default = "k8s_master-1"
+}

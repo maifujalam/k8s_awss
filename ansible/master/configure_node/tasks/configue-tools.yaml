@@ -13,14 +13,28 @@
     block: |
       source <(argocd completion bash)
       alias a=argocd
-      complete -o default -F __start_kubectl a
+      complete -o default -F __start_argocd a
 
+- name: Configure kubectl
+  blockinfile:
+    path: ~/.bashrc
+    block: |
+      source <(kubectl completion bash)
+      alias k=kubectl
+      complete -o default -F __start_kubectl k
 
 - name: Download the K9s binary
   ansible.builtin.get_url:
     url: https://github.com/derailed/k9s/releases/download/v0.32.5/k9s_linux_amd64.deb
     dest: /tmp/k9s_linux_amd64.deb
     mode: '0644'
+
+- name: Download calicoctl binary
+  become: true
+  ansible.builtin.get_url:
+    url:  https://github.com/projectcalico/calico/releases/download/v3.28.2/calicoctl-linux-amd64
+    dest: /usr/local/bin/calicoctl
+    mode: '0755'
 
 - name: Install the K9s package
   become: true

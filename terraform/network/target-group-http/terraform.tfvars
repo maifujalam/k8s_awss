@@ -5,5 +5,5 @@ port = 32080
 vpc_name = "default"
 protocol = "HTTP"
 health_check_path = "/healthz"
-instance_name = "k8s_master-1"
+instance_name = "k8s-master"
 load_balancer_name = "app-load-balancer"

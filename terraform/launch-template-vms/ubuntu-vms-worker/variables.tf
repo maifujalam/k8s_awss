@@ -45,3 +45,6 @@ variable "security_group" {
 variable "iam_instance_profile" {
   default = null
 }
+variable "source_dest_check" {
+  default = true
+}

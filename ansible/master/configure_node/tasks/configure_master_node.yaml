@@ -25,14 +25,6 @@
   become: true
   shell: bash /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/5_kubernetes_images.sh
 
-- name: Configure kubectl
-  blockinfile:
-    path: ~/.bashrc
-    block: |
-      source <(kubectl completion bash)
-      alias k=kubectl
-      complete -o default -F __start_kubectl k
-
 - name: Configure helm
   become: true
   shell: bash /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/8_install_helm.sh
@@ -52,6 +44,11 @@
     regexp: '^worker='
     line: "{{WORKER_NODE_IP}} worker"
     state: present
+
+- name: Update hostname
+  become: true
+  hostname:
+    name: master
 
 - name: Reboot the system
   become: true
