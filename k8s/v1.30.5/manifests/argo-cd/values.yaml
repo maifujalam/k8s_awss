@@ -2625,7 +2625,7 @@ repoServer:
   resources:
     limits:
       ephemeral-storage: "1024Mi"
-      cpu: 1000m
+      cpu: 1600m
       memory: 1000Mi
     requests:
       ephemeral-storage: "512Mi"
