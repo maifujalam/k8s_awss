@@ -53,4 +53,4 @@ tigeraOperator:
   registry: quay.io
 calicoctl:
   image: docker.io/calico/ctl
-  tag: v3.26.1
+  tag: v3.28.2
