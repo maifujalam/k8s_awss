@@ -45,3 +45,6 @@ variable "private_ip" {
 variable "iam_instance_profile" {
   default = null
 }
+variable "source_dest_check" {
+  default = true
+}

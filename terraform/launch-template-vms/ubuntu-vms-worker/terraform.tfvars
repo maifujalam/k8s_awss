@@ -12,3 +12,4 @@ private_ip = "172.31.0.38" # Starting digit of private ip ( will increase last d
 security_group   = "default-sg"
 instance_type    = "t3a.medium"
 iam_instance_profile = "ec2-full-policy"
+source_dest_check = false
