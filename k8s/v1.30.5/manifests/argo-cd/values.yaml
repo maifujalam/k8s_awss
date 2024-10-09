@@ -814,7 +814,8 @@ controller:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
@@ -1212,7 +1213,8 @@ dex:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
@@ -1471,7 +1473,7 @@ redis:
   # @default -- `{}` (defaults to global.affinity preset)
   affinity: {}
   nodeSelector:
-      node-role.kubernetes.io/control-plane: ""
+    node-role.kubernetes.io/control-plane: ""
 
   # -- Default tolerations for all components
   tolerations:
@@ -1730,7 +1732,8 @@ redisSecretInit:
 
   # -- Node selector to be added to the Redis secret-init Job
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- Tolerations to be added to the Redis secret-init Job
   # @default -- `[]` (defaults to global.tolerations)
@@ -2016,7 +2019,8 @@ server:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
@@ -2621,12 +2625,12 @@ repoServer:
   resources:
     limits:
       ephemeral-storage: "1024Mi"
-      cpu: 1500m
-      memory: 700Mi
+      cpu: 1600m
+      memory: 1000Mi
     requests:
       ephemeral-storage: "512Mi"
-      cpu: 300m
-      memory: 300Mi
+      cpu: 100m
+      memory: 100Mi
 
   # Repo server container ports
   containerPorts:
@@ -2686,7 +2690,8 @@ repoServer:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
@@ -3055,7 +3060,8 @@ applicationSet:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
@@ -3430,7 +3436,8 @@ notifications:
 
   # -- [Node selector]
   # @default -- `{}` (defaults to global.nodeSelector)
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # -- [Tolerations] for use with node taints
   # @default -- `[]` (defaults to global.tolerations)
