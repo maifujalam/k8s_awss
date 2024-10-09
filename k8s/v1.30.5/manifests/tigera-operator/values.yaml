@@ -15,7 +15,7 @@ installation:
   # Example: --set installation.imagePullSecrets[0].name=my-existing-secret
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
-    bgp: Disabled
+#    bgp: Disabled
     ipPools:
       - name: default-ipv4-ippool
         blockSize: 26
