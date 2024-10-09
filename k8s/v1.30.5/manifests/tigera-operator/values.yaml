@@ -6,8 +6,8 @@ installation:
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
-    - blockSize: 24
-      cidr: 198.168.0.0/16
+    - blockSize: 26
+      cidr: 198.168.1.0/22
 #      encapsulation: VXLANCrossSubnet
 #      natOutgoing: Enabled
 #      nodeSelector: all()
