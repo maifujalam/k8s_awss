@@ -9,8 +9,7 @@ spec:
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
-    - name: default-ipv4-ippool
-      blockSize: 26
+    - blockSize: 26
       cidr: 192.168.0.0/16
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
