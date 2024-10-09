@@ -6,6 +6,7 @@
     repo: https://github.com/maifujalam/k8s_aws.git
     dest: ~/k8s_aws
     clone: yes
+    version: k8s_v1.1
 
 - name: Create package folder
   file:
