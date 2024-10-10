@@ -50,4 +50,4 @@
 
 - name: Display K9s installation result
   debug:
-    var: result.stdout
+    var: result.stdout_lines
