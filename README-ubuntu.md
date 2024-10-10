@@ -16,4 +16,4 @@ To create Ubuntu NAT Instance [ https://docs.aws.amazon.com/vpc/latest/userguide
    Outbounbd: 8,443 
 
 
-1. Extract kubernetes dashboard token. 
+1. Extract kubernetes dashboard token. kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d > k8s-dashboard.token
