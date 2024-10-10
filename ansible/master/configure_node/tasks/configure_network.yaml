@@ -12,3 +12,10 @@
 - name: Run firewalld script
   become: true
   shell: bash /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/4-configure_firealld_selinux.sh
+
+- name: Disable apparmor
+  become: true
+  ansible.builtin.systemd:
+    name: apparmor
+    enabled: no
+    state: stopped

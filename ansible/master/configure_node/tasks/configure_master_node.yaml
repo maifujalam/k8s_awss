@@ -50,7 +50,7 @@
   hostname:
     name: master
 
-- name: Reboot the system
-  become: true
-  reboot:
-    reboot_timeout: 600  # Time to wait for the system to reboot (in seconds)
+#- name: Reboot the system
+#  become: true
+#  reboot:
+#    reboot_timeout: 600  # Time to wait for the system to reboot (in seconds)
