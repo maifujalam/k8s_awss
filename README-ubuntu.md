@@ -15,3 +15,5 @@ To create Ubuntu NAT Instance [ https://docs.aws.amazon.com/vpc/latest/userguide
    Inbound: 22,80,443,
    Outbounbd: 8,443 
 
+
+1. Extract kubernetes dashboard token. 

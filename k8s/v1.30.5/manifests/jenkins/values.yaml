@@ -650,11 +650,14 @@ controller:
 
   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   # -- Node labels for pod assignment
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
 
   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
   # -- Toleration labels for pod assignment
-  tolerations: []
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      effect: NoSchedule
   # -- Set TerminationGracePeriodSeconds
   terminationGracePeriodSeconds:
   # -- Set the termination message path
