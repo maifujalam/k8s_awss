@@ -50,4 +50,9 @@
 
 - name: Display K9s installation result
   debug:
-    var: result.stdout
+    var: result.stdout_lines
+
+- name: Reboot the system
+  become: true
+  reboot:
+    reboot_timeout: 600  # Time to wait for the system to reboot (in seconds)

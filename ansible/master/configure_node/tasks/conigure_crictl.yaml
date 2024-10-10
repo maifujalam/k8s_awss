@@ -18,10 +18,3 @@
     enabled: yes
     state: restarted
 
-- name: Disable apparmor
-  become: true
-  ansible.builtin.systemd:
-    name: apparmor
-    enabled: no
-    state: stopped
-
