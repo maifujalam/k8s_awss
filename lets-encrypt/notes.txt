@@ -1,0 +1,4 @@
+1. Create IAM Role: terraform/iam/hosted-zone/lets-encrypt
+2. go ot the dashboard and attach to any IAM user.Here i have attached to IAM user: helm-repo
+3. Use the secret and access keys in staging-cluster-issuer-llt.yaml .
+
