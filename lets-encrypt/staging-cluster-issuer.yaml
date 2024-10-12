@@ -18,4 +18,5 @@ spec:
           auth:
             kubernetes:
               serviceAccountRef:
-                name: cert-manager-acme-dns01-route53
+#                name: cert-manager-acme-dns01-route53
+                name: cert-manager
