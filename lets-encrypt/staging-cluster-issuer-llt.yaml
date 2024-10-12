@@ -19,4 +19,4 @@ spec:
             name: aws-credentials-secret
             key: aws_secret_access_key
           # (optional) you can also assume a role with these credentials
-          role: arn:aws:iam::383886020191:policy/lets-encrypt_policy
+          role: arn:aws:iam::383886020191:user/helm-repo
