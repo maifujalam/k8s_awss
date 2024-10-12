@@ -11,7 +11,7 @@ spec:
     solvers:
     - dns01:
         route53:
-          region: eu-central-1
+          region: ap-south-1
           accessKeyIDSecretRef:
             name: prod-route53-credentials-secret
             key: access-key-id
