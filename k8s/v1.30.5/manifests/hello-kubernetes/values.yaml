@@ -13,7 +13,7 @@ ingress:
   labels: {}
   issuer:
     scope: cluster
-    name: selfsigned-cluster-issuer
+    name: letsencrypt-prod-cluster-issuer-llt
   hosts:
     - helloworld.maifuj.com
   path: /
