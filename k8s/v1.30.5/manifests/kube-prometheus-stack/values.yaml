@@ -394,10 +394,10 @@ alertmanager:
     ingressClassName: nginx
 
     annotations:
-      cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer-llt
+      nginx.ingress.kubernetes.io/backend-protocol: HTTP
+      nginx.ingress.kubernetes.io/ssl-passthrough: true
+      nginx.ingress.kubernetes.io/ssl-redirect: true
 
     labels: {}
 
@@ -1003,7 +1003,7 @@ grafana:
     ## Annotations for Grafana Ingress
     ##
     annotations:
-      cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+      cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer-llt
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -2575,7 +2575,7 @@ prometheusOperator:
       admissionCert:
         duration: ""  # default to be 1y
       issuerRef:
-        name: "selfsigned-cluster-issuer"
+        name: "letsencrypt-prod-cluster-issuer-llt"
         kind: "ClusterIssuer"
 
   ## Namespaces to scope the interaction of the Prometheus Operator and the apiserver (allow list).
@@ -3278,10 +3278,10 @@ prometheus:
     ingressClassName: nginx
 
     annotations:
-      cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer-llt
+      nginx.ingress.kubernetes.io/backend-protocol: HTTP
+      nginx.ingress.kubernetes.io/ssl-passthrough: true
+      nginx.ingress.kubernetes.io/ssl-redirect: true
     labels: {}
 
     ## Redirect ingress to an additional defined port on the service

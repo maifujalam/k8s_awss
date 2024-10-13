@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: hello-kubernetes
   name: wildcard-certificate-prod
-  namespace: helloworld
+  namespace: cert-manager
 spec:
   dnsNames:
   - "*.maifuj.com"
