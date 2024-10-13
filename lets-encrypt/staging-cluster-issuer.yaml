@@ -14,8 +14,8 @@ spec:
     - dns01:
         route53:
           region: ap-south-1
-#          role: arn:aws:iam::${AWS_ACCOUNT_ID}:role/cert-manager-acme-dns01-route53
-          role:  arn:aws:iam::383886020191:policy/lets-encrypt_policy
+           # Role is optional
+#          role: arn:aws:iam::${AWS_ACCOUNT_ID}:role/cert-manager-acme-dns01-route53.
           auth:
             kubernetes:
               serviceAccountRef:

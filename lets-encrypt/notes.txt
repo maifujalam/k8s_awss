@@ -3,4 +3,5 @@
 3. Create aws credentials secret for iam uuser helm-repo:
   kubectl -n cert-manager create secret generic aws-credentials-secret --from-literal=aws_access_key_id=<access-key-id> --from-literal=aws_secret_access_key=<secret-access-key>
 4. Use the secret and access keys in staging-cluster-issuer-llt.yaml .
-
+Doc:  https://repost.aws/questions/QUOY5XngCtRyOX4Desaygz8Q/not-authorized-to-perform-sts-assumerole
+5.

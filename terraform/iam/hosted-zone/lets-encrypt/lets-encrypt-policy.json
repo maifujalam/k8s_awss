@@ -18,11 +18,6 @@
       "Effect": "Allow",
       "Action": "route53:ListHostedZonesByName",
       "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "sts:AssumeRole",
-      "Resource": "arn:aws:iam::383886020191:role/trust-policy-role"
     }
   ]
 }
