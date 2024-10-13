@@ -2050,15 +2050,12 @@ server:
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-certificates-used-by-argocd-server
   certificate:
     # -- Deploy a Certificate resource (requires cert-manager)
-    enabled: false
+    enabled: true
     # -- Certificate primary domain (commonName)
     # @default -- `""` (defaults to global.domain)
     domain: "argocd.maifuj.com"
     # -- Certificate Subject Alternate Names (SANs)
     additionalHosts:
-      - master
-      - localhost
-      - argocd.master.com
       - argocd.maifuj.com
     # -- The requested 'duration' (i.e. lifetime) of the certificate.
     # @default -- `""` (defaults to 2160h = 90d if not specified)
