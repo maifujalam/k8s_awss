@@ -12,8 +12,7 @@ spec:
     chart: argo-cd
     helm:
       valueFiles:
-      - values.yaml
-    path: k8s/v1.30.5/manifests/argo-cd
+      - https://raw.githubusercontent.com/maifujalam/k8s_aws/refs/heads/master/k8s/v1.30.5/manifests/argo-cd/values.yaml
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 7.4.3-aws
   syncPolicy:
