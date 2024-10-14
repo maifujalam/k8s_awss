@@ -2053,10 +2053,10 @@ server:
     enabled: true
     # -- Certificate primary domain (commonName)
     # @default -- `""` (defaults to global.domain)
-    domain: "argocd.maifuj.com"
+    domain: argocd.maifuj.com
     # -- Certificate Subject Alternate Names (SANs)
     additionalHosts:
-      - argocd.maifuj.com
+      - argocd.master.com
     # -- The requested 'duration' (i.e. lifetime) of the certificate.
     # @default -- `""` (defaults to 2160h = 90d if not specified)
     ## Ref: https://cert-manager.io/docs/usage/certificate/#renewal
