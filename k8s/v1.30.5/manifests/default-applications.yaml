@@ -13,9 +13,9 @@ spec:
    targetRevision: HEAD
    path: k8s/argocdApplication
  syncPolicy:
-   automated:
-     prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
-     selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
-     allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
+#   automated:   # Disabled    the auto sync
+#     prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
+#     selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+#     allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
    syncOptions:
      - CreateNamespace=true
