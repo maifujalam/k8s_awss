@@ -30,3 +30,7 @@ spec:
     jqPathExpressions:
     - '.data.csrf'
     - '.data'
+
+  - kind: Deployment
+    jqPathExpressions:
+      - '.spec.template.metadata.annotations'
