@@ -24,7 +24,7 @@ spec:
     - Validate=false
     - CreateNamespace=true
   ignoreDifferences:  # https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
-  - group: v1
+  - group: ""
     kind: Secret
     jsonPointers:
       - /data

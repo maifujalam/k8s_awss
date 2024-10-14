@@ -42,7 +42,7 @@ crds:
 global:
   # -- Default domain used by all components
   ## Used for ingresses, certificates, SSO, notifications, etc.
-  domain: argocd.master.com
+  domain: argocd.maifuj.com
 
   # -- Runtime class name for all components
   runtimeClassName: ""
@@ -2055,8 +2055,7 @@ server:
     # @default -- `""` (defaults to global.domain)
     domain: argocd.maifuj.com
     # -- Certificate Subject Alternate Names (SANs)
-    additionalHosts:
-      - argocd.master.com
+    additionalHosts: []
     # -- The requested 'duration' (i.e. lifetime) of the certificate.
     # @default -- `""` (defaults to 2160h = 90d if not specified)
     ## Ref: https://cert-manager.io/docs/usage/certificate/#renewal
