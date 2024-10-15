@@ -17,3 +17,6 @@ To create Ubuntu NAT Instance [ https://docs.aws.amazon.com/vpc/latest/userguide
 
 
 1. Extract kubernetes dashboard token. kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d > k8s-dashboard.token
+
+Start Stop Instance Lambda Function:-
+https://repost.aws/knowledge-center/start-stop-lambda-eventbridge
