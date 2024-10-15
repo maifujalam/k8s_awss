@@ -2575,8 +2575,8 @@ prometheusOperator:
       admissionCert:
         duration: ""  # default to be 1y
       issuerRef:
-        name: ""
-        kind: ""
+        name: "selfsigned-cluster-issuer"
+        kind: "ClusterIssuer"
 
   ## Namespaces to scope the interaction of the Prometheus Operator and the apiserver (allow list).
   ## This is mutually exclusive with denyNamespaces. Setting this to an empty object will disable the configuration
