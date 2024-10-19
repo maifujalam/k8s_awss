@@ -13,6 +13,7 @@ spec:
     helm:
       valueFiles:
       - https://raw.githubusercontent.com/maifujalam/k8s_aws/refs/heads/master/k8s/v1.30.5/manifests/jenkins/values.yaml
+      - plugins.yaml
     repoURL: https://public-helm-repository-20231023095000508500000001.s3.ap-south-1.amazonaws.com/
     targetRevision: 5.7.3
   syncPolicy:
