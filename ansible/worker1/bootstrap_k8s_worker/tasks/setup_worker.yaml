@@ -7,6 +7,14 @@
   become: true
   shell: kubeadm reset --force
 
+- name: Delete all exited containers.
+  become: true
+  shell: crictl rm  -all
+
+- name: Remove old kubeconfig files.
+  become: true
+  shell: rm /etc/kubernetes/* -rfv
+
 - name: Join cluster
   become: true
   shell:  kubeadm join --config /home/{{USER}}/{{PROJECT_PATH}}/v{{KUBERNETES_VERSION}}/{{PACKAGE_DIRECTORY}}/join-default-worker1.yaml
