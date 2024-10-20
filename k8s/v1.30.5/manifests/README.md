@@ -149,7 +149,15 @@ Jenkins with agent:-
 6. helm -n jenkins uninstall jenkins
 7. Username: admin  pass_exract: kubectl exec --namespace jenkins -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password && echo
 
+Hashicorp Vault:-
+1. helm repo add hashicorp https://helm.releases.hashicorp.com
+2. helm repo update
+3. helm search repo vault
+4. helm pull hashicorp/vault --version 0.28.1 --untar
+5. helm -n vault install vault vault --create-namespace
+6. helm -n vault uninstall vault
+
 Helm Package:-
 1. Build number is based on Char.yaml->version
 2. Helm package: h package hello-kubernetes
-3. helm 
+3. helm  
