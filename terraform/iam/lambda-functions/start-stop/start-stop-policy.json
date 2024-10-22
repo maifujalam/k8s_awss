@@ -1,4 +1,5 @@
-{  "Version": "2012-10-17",
+{
+  "Version": "2012-10-17",
   "Statement": [
     {
       "Effect": "Allow",
@@ -13,7 +14,8 @@
       "Effect": "Allow",
       "Action": [
         "ec2:Start*",
-        "ec2:Stop*"
+        "ec2:Stop*",
+        "ec2:DescribeInstances*"
       ],
       "Resource": "*"
     }

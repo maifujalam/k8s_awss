@@ -45,3 +45,13 @@ if __name__ == "__main__":
         start_instance(INSTANCE_IDS)
     except Exception as e:
         print("Starting Instance Failed",e)
+
+def lambda_handler(event, context):
+    """Lambda handler function."""
+    print("Event and Context received:", event ,context)
+    get_instance_by_tag(TAG_KEY, TAG_VALUE)
+    start_instance(INSTANCE_IDS)
+    return {
+        'statusCode': 200,
+        'body': f"Instances started: {INSTANCE_IDS}"
+    }

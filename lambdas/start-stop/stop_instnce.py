@@ -45,3 +45,13 @@ if __name__ == "__main__":
         stop_instance(INSTANCE_IDS)
     except Exception as e:
         print("Stopping Instance Failed", e)
+
+def lambda_handler(event, context):
+    """Lambda handler function."""
+    print("Event and Context received:", event ,context)
+    get_instance_by_tag(TAG_KEY, TAG_VALUE)
+    stop_instance(INSTANCE_IDS)
+    return {
+        'statusCode': 200,
+        'body': f"Instances stopped: {INSTANCE_IDS}"
+    }
