@@ -4,18 +4,22 @@ pipeline {
     environment {
         HELM_CHART_DIR = 'helm-chart-directory'
         HELM_VALUES_FILE = 'values.yaml'
-        DOCKER_IMAGE_TAG = 'latest'
     }
-
+    parameters {
+        string(name: 'REPO_NAME', defaultValue: 'https://github.com/maifujalam/k8s_aws.git', description: 'Enter the git remote name'),
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter the branch name to pull from'),
+        string(name: 'FOLDER_PATH', defaultValue: 'k8s/v1.30.5/manifests', description: 'Enter the folder path name which to be helm build')
+    }
     stages {
-        stage('Checkout') {
+        stage('Git Checkout') {
             steps {
-                // Checkout code from SCM (Git, etc.)
-                checkout scm
+                checkout scmGit(
+                branches: [[name: $BRANCH_NAME]],
+                userRemoteConfigs: [[url: $REPO_NAME]])
             }
         }
 
-        stage('Check for Changes in values.yaml') {
+        stage('Render Helm Chart') {
             steps {
                 script {
                     // Check if the values.yaml file has been modified

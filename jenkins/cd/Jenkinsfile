@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Check for Changes in values.yaml') {
+        stage('Create argocd application') {
             steps {
                 script {
                     // Check if the values.yaml file has been modified
@@ -33,7 +33,7 @@ pipeline {
             }
         }
 
-        stage('Build Helm Chart') {
+        stage('Push Argocd Application') {
             when {
                 expression {
                     // Proceed only if the previous step was successful
@@ -51,7 +51,7 @@ pipeline {
             }
         }
 
-        stage('Push Helm Chart') {
+        stage('Sync Argocd Application') {
             when {
                 expression {
                     return currentBuild.result == 'SUCCESS'
