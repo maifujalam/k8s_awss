@@ -10,18 +10,6 @@ pipeline {
         string(name: 'FOLDER_PATH', defaultValue: 'k8s/v1.30.5/manifests', description: 'Enter the folder path name which to be helm build')
     }
     stages {
-//         stage("Get User Data") {
-//             steps {
-//                 script {
-//                     input message: 'Please provide your input',
-//                     parameters: [
-//                         string(name: 'REPO_NAME', defaultValue: 'https://github.com/maifujalam/k8s_aws.git', description: 'Enter the git remote name'),
-//                         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter the branch name to pull from'),
-//                         string(name: 'FOLDER_PATH', defaultValue: 'k8s/v1.30.5/manifests', description: 'Enter the folder path name which to be helm build')
-//                     ]
-//                 }
-//             }
-//         }
         stage('Git Checkout') {
             steps {
                 checkout scmGit(
@@ -32,16 +20,9 @@ pipeline {
         stage('Render Helm Chart') {
             steps {
                 script {
-                    // Check if the values.yaml file has been modified
-                    def changes = sh(script: "git diff --name-only HEAD HEAD~1", returnStdout: true).trim()
-
-                    if (changes.contains(HELM_CHART_DIR + '/' + HELM_VALUES_FILE)) {
-                        echo "Changes detected in ${HELM_VALUES_FILE}. Proceeding with Helm chart build."
-                        currentBuild.result = 'SUCCESS'
-                    } else {
-                        echo "No changes detected in ${HELM_VALUES_FILE}. Skipping Helm chart build."
-                        currentBuild.result = 'ABORTED'
-                        error("No changes in Helm values.yaml. Skipping the build.")
+                    dir($FOLDER_PATH) {
+                        echo "$FOLDER_PATH"
+                        sh pwd;
                     }
                 }
             }
