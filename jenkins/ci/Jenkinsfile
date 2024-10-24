@@ -4,7 +4,7 @@ pipeline {
         HELM_CHART_DIR = 'helm-chart-directory'
         HELM_VALUES_FILE = 'values.yaml'
     }
-    input message: '', parameters: [
+   parameters: [
         string(name: 'REPO_NAME', defaultValue: 'https://github.com/maifujalam/k8s_aws.git', description: 'Enter the git remote name'),
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter the branch name to pull from'),
         string(name: 'FOLDER_PATH', defaultValue: 'k8s/v1.30.5/manifests', description: 'Enter the folder path name which to be helm build')
