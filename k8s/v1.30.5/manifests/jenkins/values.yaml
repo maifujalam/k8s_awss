@@ -980,12 +980,12 @@ agent:
   # -- Resources allocation (Requests and Limits)
   resources:
     requests:
-      cpu: "512m"
-      memory: "512Mi"
+      cpu: "250m"
+      memory: "256Mi"
       # ephemeralStorage:
     limits:
-      cpu: "200m"
-      memory: "256Mi"
+      cpu: "500m"
+      memory: "512Mi"
       # ephemeralStorage:
   livenessProbe: {}
 #    execArgs: "cat /tmp/healthy"
