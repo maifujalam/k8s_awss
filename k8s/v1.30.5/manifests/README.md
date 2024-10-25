@@ -157,6 +157,13 @@ Hashicorp Vault:-
 5. helm -n vault install vault vault --create-namespace
 6. helm -n vault uninstall vault
 
+AWS CSI Drover:-
+1. helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver/
+2. helm repo update
+3. helm search repo csi 
+4. helm pull aws-ebs-csi-driver/aws-ebs-csi-driver  --version 2.36.0 --untar
+5. helm -n aws-ebs-csi-driver install aws-ebs-csi-driver aws-ebs-csi-driver --create-namespace
+
 Helm Package:-
 1. Build number is based on Char.yaml->version
 2. Helm package: h package hello-kubernetes
