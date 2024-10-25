@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: hello-kubernetes
+    chart: aws-ebs-csi-driver
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/maifujalam/k8s_aws/refs/heads/master/k8s/v1.30.5/manifests/aws-ebs-csi-driver/values.yaml
