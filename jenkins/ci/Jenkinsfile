@@ -22,8 +22,8 @@ pipeline {
         stage('Render Helm Chart') {
             steps {
                 script {
-                    dir($FOLDER_PATH) {
-                        echo "$FOLDER_PATH"
+                    dir("${params.FOLDER_PATH}") {
+                        echo "${params.FOLDER_PATH}"
                         sh pwd;
                     }
                 }
