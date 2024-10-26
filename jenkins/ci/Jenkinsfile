@@ -12,9 +12,11 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                checkout scmGit(
-                branches: [[name: "${BRANCH_NAME}"]],
-                userRemoteConfigs: [[url: "${REPO_NAME}"]])
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "${params.BRANCH_NAME}"]],
+                    userRemoteConfigs: [[url: "${params.REPO_NAME}"]]
+                ])
             }
         }
         stage('Render Helm Chart') {
