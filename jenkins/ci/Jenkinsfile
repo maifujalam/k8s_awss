@@ -26,7 +26,6 @@ pipeline {
                         echo "Folder to build: ${params.FOLDER_PATH}"
                         sh pwd;
                         sh helm version;
-                        sh helm template . ;
                     }
                 }
             }
