@@ -25,9 +25,17 @@ pipeline {
                     dir("${params.FOLDER_PATH}") {
                         echo "Folder to build: ${params.FOLDER_PATH}"
                     }
-                    def output = sh(script: 'pwd;helm version', returnStdout: true).trim()
+                    def output = sh(script: 'pwd;helm version';helm template , returnStdout: true).trim()
                     // Print output to console
                     echo "Output: ${output}"
+                    try {
+                        // Run helm template command
+                        def template_output = sh(script: "helm template ${CHART_DIR} -f ${VALUES_FILE}", returnStdout: true).trim()
+                        echo "Helm template output:\n${template_output}"
+                        echo "\n\nHelm template validation passed.\n"
+                    } catch (Exception e) {
+                        error("Helm template validation failed: ${e}")
+                    }
                 }
             }
         }
