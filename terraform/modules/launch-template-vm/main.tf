@@ -32,7 +32,7 @@ resource "aws_instance" "vm" {
   instance_market_options {
     market_type = var.spot_instance == true ? "spot" : null
     spot_options {
-      instance_interruption_behavior = "stop"
+#       instance_interruption_behavior = "stop"
     }
   }
 #   security_groups = [var.security_group] # Ony when using default Security group
