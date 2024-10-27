@@ -39,11 +39,6 @@ pipeline {
         }
 
         stage('Build Helm Chart') {
-            when {
-                expression {
-                    return currentBuild.result == 'SUCCESS'
-                }
-            }
             steps {
                 script {
                     // Build and package the Helm chart
@@ -74,11 +69,7 @@ pipeline {
             }
         }
 
-        stage('Push Helm Chart') {
-            when {
-                expression {
-                    return currentBuild.result == 'SUCCESS'
-                }
+        stage('Push Helm Chart') { }
             }
             steps {
                 script {
