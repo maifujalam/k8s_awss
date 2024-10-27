@@ -65,8 +65,7 @@ pipeline {
             }
         }
 
-        stage('Push Helm Chart') { }
-            }
+        stage('Push Helm Chart') {
             steps {
                 script {
                     // Push the packaged chart to a Helm repository (if required)
