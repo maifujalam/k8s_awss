@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     dir("${params.FOLDER_PATH}") {
-                        echo "Folder to build: ${params.FOLDER_PATH}";
-                        def output = sh(script: 'pwd;helm version;ls -althr;' , returnStdout: true).trim()
+                        echo "Folder to render: ${params.FOLDER_PATH}";
+                        def output = sh(script: 'pwd;helm version;' , returnStdout: true).trim()
                         echo "Output: ${output}"
                         try {
                             // Run helm template command
@@ -41,17 +41,35 @@ pipeline {
         stage('Build Helm Chart') {
             when {
                 expression {
-                    // Proceed only if the previous step was successful
                     return currentBuild.result == 'SUCCESS'
                 }
             }
             steps {
                 script {
                     // Build and package the Helm chart
-                    sh """
-                        helm lint ${HELM_CHART_DIR}
-                        helm package ${HELM_CHART_DIR}
-                    """
+                    dir("${params.FOLDER_PATH}") {
+                        echo "Folder to build: ${params.FOLDER_PATH}";
+                        try {
+                            // Run helm template command
+                            def lint_output = sh(script: 'helm lint .', returnStdout: true).trim()
+                            echo "Helm lint output:\n${lint_output}"
+                            echo "\n\nHelm lint successful.\n"
+                        } catch (Exception e) {
+                            error("Helm lint failed: ${e}")
+                        }
+                        try {
+                            // Run helm template command
+                            def package_output = sh(script: 'helm lint .', returnStdout: true).trim()
+                            echo "Helm lint output:\n${lint_output}"
+                            echo "\n\nHelm lint successful.\n"
+                        } catch (Exception e) {
+                            error("Helm package failed: ${e}")
+                        }
+                        sh """
+                            helm lint ${HELM_CHART_DIR}
+                            helm package ${HELM_CHART_DIR}
+                        """
+                    }
                 }
             }
         }
