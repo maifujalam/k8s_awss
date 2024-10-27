@@ -23,8 +23,9 @@ pipeline {
                 script {
                     dir("${params.FOLDER_PATH}") {
                         echo "Folder to build: ${params.FOLDER_PATH}"
+                        ls -althre;
                     }
-                    def output = sh(script: 'pwd;helm version' , returnStdout: true).trim()
+                    def output = sh(script: 'pwd;helm version';ls -althr , returnStdout: true).trim()
                     // Print output to console
                     echo "Output: ${output}"
                     try {
