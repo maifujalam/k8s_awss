@@ -1,66 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-            yaml '''
-            apiVersion: "v1"
-            kind: "Pod"
-            metadata:
-              annotations:
-                kubernetes.jenkins.io/last-refresh: "1730014405165"
-              labels:
-                jenkins/jenkins-jenkins-agent: "true"
-                jenkins/label-digest: "500b4f18aee87616849e4f4c2435020898e34aa0"
-                jenkins/label: "jenkins-jenkins-agent"
-                kubernetes.jenkins.io/controller: "http___jenkins_jenkins_svc_cluster_local_8080x"
-              name: "default-6lv6l"
-              namespace: "jenkins"
-            spec:
-              containers:
-              - args:
-                - "********"
-                - "default-6lv6l"
-                env:
-                - name: "JENKINS_SECRET"
-                  value: "********"
-                - name: "JENKINS_TUNNEL"
-                  value: "jenkins-agent.jenkins.svc.cluster.local:50000"
-                - name: "JENKINS_AGENT_NAME"
-                  value: "default-6lv6l"
-                - name: "REMOTING_OPTS"
-                  value: "-noReconnectAfter 1d"
-                - name: "JENKINS_NAME"
-                  value: "default-6lv6l"
-                - name: "JENKINS_AGENT_WORKDIR"
-                  value: "/home/jenkins/agent"
-                - name: "JENKINS_URL"
-                  value: "http://jenkins.jenkins.svc.cluster.local:8080/"
-                image: "docker.io/skmaifujalam/jenkins-agent:1.0.0"
-                imagePullPolicy: "IfNotPresent"
-                name: "jnlp"
-                resources:
-                  limits:
-                    memory: "512Mi"
-                    cpu: "500m"
-                  requests:
-                    memory: "256Mi"
-                    cpu: "250m"
-                tty: false
-                volumeMounts:
-                - mountPath: "/home/jenkins/agent"
-                  name: "workspace-volume"
-                  readOnly: false
-                workingDir: "/home/jenkins/agent"
-              nodeSelector:
-                kubernetes.io/os: "linux"
-              restartPolicy: "Never"
-              serviceAccountName: "default"
-              volumes:
-              - emptyDir:
-                  medium: ""
-                name: "workspace-volume"
-            '''
-        }
-    }
+    agent any
     environment {
         HELM_VALUES_FILE = 'values.yaml'
         HELM_REPO_NAME="public-helm-repository"
@@ -155,3 +94,4 @@ pipeline {
         }
     }
 }
+
