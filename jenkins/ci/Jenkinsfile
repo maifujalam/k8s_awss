@@ -54,9 +54,9 @@ pipeline {
                         }
                         try {
                             // Run helm template command
-                            def package_output = sh(script: 'helm lint .', returnStdout: true).trim()
-                            echo "Helm lint output:\n${lint_output}"
-                            echo "\n\nHelm lint successful.\n"
+                            def package_output = sh(script: 'helm package .', returnStdout: true).trim()
+                            echo "Helm package output:\n${package_output}"
+                            echo "\n\nHelm package successful.\n"
                         } catch (Exception e) {
                             error("Helm package failed: ${e}")
                         }
