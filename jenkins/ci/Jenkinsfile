@@ -76,16 +76,16 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: "${params.BRANCH_NAME}"]],
-                    userRemoteConfigs: [[url: "${params.REPO_NAME}"]]
+                    branches: [[name: "${params.GIT_BRANCH_NAME}"]],
+                    userRemoteConfigs: [[url: "${params.GIT_REPO_NAME}"]]
                 ])
             }
         }
         stage('Render Helm Chart') {
             steps {
                 script {
-                    dir("${params.FOLDER_PATH}") {
-                        echo "Folder to render: ${params.FOLDER_PATH}";
+                    dir("${params.CHART_FOLDER_PATH}") {
+                        echo "Folder to render: ${params.CHART_FOLDER_PATH}";
                         def output = sh(script: 'pwd;helm version;' , returnStdout: true).trim()
                         echo "Output: ${output}"
                         try {
@@ -105,8 +105,8 @@ pipeline {
             steps {
                 script {
                     // Build and package the Helm chart
-                    dir("${params.FOLDER_PATH}") {
-                        echo "Folder to build: ${params.FOLDER_PATH}";
+                    dir("${params.CHART_FOLDER_PATH}") {
+                        echo "Folder to build: ${params.CHART_FOLDER_PATH}";
                         try {
                             // Run helm template command
                             def lint_output = sh(script: 'helm lint .', returnStdout: true).trim()
@@ -132,9 +132,9 @@ pipeline {
             steps {
                 script {
                     echo "Pushing Helm chart to repository"
-                    dir("${params.FOLDER_PATH}") {
-                        echo "helm chart to push: ${params.FOLDER_PATH}";
-                        def LATEST_HELM_CHART=$(ls -t ${TMP_DIR}/${CHART_NAME}-*.tgz | head -n 1)
+                    dir("${params.CHART_FOLDER_PATH}") {
+                        echo "helm chart to push: ${params.CHART_FOLDER_PATH}";
+                        def LATEST_HELM_CHART=sh(script: "ls -t *.tgz | head -n 1",returnStdout: true).trim()
                         echo "Latest helm chart build: ${LATEST_HELM_CHART}"
                         helm s3 push --force $LATEST_HELM_CHART ${HELM_REPO_NAME};
                     }
@@ -155,3 +155,4 @@ pipeline {
         }
     }
 }
+)${(ls -t "*.tgz | head -n 1)
