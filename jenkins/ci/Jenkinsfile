@@ -17,18 +17,13 @@ pipeline {
               containers:
               - args:
                 - "********"
-                - "default-6lv6l"
                 env:
                 - name: "JENKINS_SECRET"
                   value: "********"
                 - name: "JENKINS_TUNNEL"
                   value: "jenkins-agent.jenkins.svc.cluster.local:50000"
-//                 - name: "JENKINS_AGENT_NAME"
-//                   value: "default-6lv6l"
                 - name: "REMOTING_OPTS"
                   value: "-noReconnectAfter 1d"
-//                 - name: "JENKINS_NAME"
-//                   value: "default-6lv6l"
                 - name: "JENKINS_AGENT_WORKDIR"
                   value: "/home/jenkins/agent"
                 - name: "JENKINS_URL"
