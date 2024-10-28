@@ -124,7 +124,7 @@ pipeline {
                         echo "helm chart to push: ${params.CHART_FOLDER_PATH}";
                         def LATEST_HELM_CHART=sh(script: "ls -t *.tgz | head -n 1",returnStdout: true).trim()
                         echo "Latest helm chart build: ${LATEST_HELM_CHART}"
-                        def INIT_HELM_REPO=sh(script: "helm repo add ${HELM_REPO_NAME} ${HELM_REPO};helm repo update;helm s3 reindex public-helm-repository;",returnStdout: true).trim()
+                        def INIT_HELM_REPO=sh(script: "helm repo add ${HELM_REPO_NAME} ${params.HELM_REPO};helm repo update;helm s3 reindex public-helm-repository;",returnStdout: true).trim()
                         echo "Latest helm initialize: ${INIT_HELM_REPO}"
                         def HELM_PUSH_REPO=sh(script: "helm s3 push --force ${LATEST_HELM_CHART} ${HELM_REPO_NAME};",returnStdout: true).trim()
                         echo "Push Helm Chart: ${HELM_PUSH_REPO}"
