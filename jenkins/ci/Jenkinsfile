@@ -22,7 +22,7 @@ pipeline {
                   value: "/home/jenkins/agent"
                 - name: "JENKINS_URL"
                   value: "http://jenkins.jenkins.svc.cluster.local:8080/"
-                image: "docker.io/skmaifujalam/jenkins-agent:v1.0.1"
+                image: "docker.io/skmaifujalam/jenkins-agent:v1.0.2"
                 imagePullPolicy: "IfNotPresent"
                 name: "jnlp"
                 resources:
