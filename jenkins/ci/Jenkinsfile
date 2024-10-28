@@ -155,4 +155,3 @@ pipeline {
         }
     }
 }
-)${(ls -t "*.tgz | head -n 1)
