@@ -14,8 +14,10 @@ if [[ ! -f /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz ]]; then
 fi
 
 # Extract and install Node Exporter
-tar -xzf /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz -C /tmp
-sudo mv /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64/node_exporter /usr/local/bin/
+if [[ -f /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz ]]; then
+  tar -xzf /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz -C /tmp
+  sudo mv /tmp/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64/node_exporter /usr/local/bin/
+fi
 
 sudo useradd -M -s /bin/false node_exporter
 sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
