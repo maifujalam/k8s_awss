@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: bastion-node-exporter-probe
+  namespace: monitoring
+  labels:
+    probe: node-exporter
+spec:
+  jobName: bastion-node-exporter-probe
+  interval: 15s
+  prober:
+    url: prometheus-blackbox-exporter.prometheus-blackbox-exporter.svc.cluster.local:9115
+  targets:
+    staticConfig:
+      static:
+      - '172.31.0.10:9100'
+  module: http_2xx
+  metricRelabelings:
+    - sourceLabels: ["__address__"]
+      regex: "(.*):9100"
+      targetLabel: instance
+      replacement: "$1"
