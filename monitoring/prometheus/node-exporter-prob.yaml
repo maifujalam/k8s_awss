@@ -5,7 +5,7 @@ metadata:
   namespace: prometheus-blackbox-exporter
   labels:
 #    probe: node-exporter
-    Release: kube-prometheus-stack
+    release: kube-prometheus-stack
 spec:
   jobName: bastion-node-exporter-probe
   interval: 15s
