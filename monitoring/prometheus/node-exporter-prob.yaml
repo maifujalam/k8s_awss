@@ -9,7 +9,7 @@ spec:
   jobName: bastion-node-exporter-probe
   interval: 15s
   prober:
-    url: prometheus-blackbox-exporter.prometheus-blackbox-exporter.svc.cluster.local:9115
+    url: http://prometheus-blackbox-exporter.prometheus-blackbox-exporter.svc.cluster.local:9115  # Add http:// scheme
   targets:
     staticConfig:
       static:
