@@ -7,7 +7,7 @@ metadata:
 #    probe: node-exporter
     release: kube-prometheus-stack
 spec:
-  jobName: bastion-node-exporter-probe
+  jobName: node-exporter
   interval: 15s
   prober:
     url: prometheus-blackbox-exporter.prometheus-blackbox-exporter.svc.cluster.local:9115  # Add http:// scheme
