@@ -1,0 +1,6 @@
+https://www.geeksforgeeks.org/args-kwargs-python/
+1. Args take argument as touple. function(arg1,arg2,arg3). then the parent function will print (arg1,arg2,arg3).
+2. Kwargs are taken as dict. function(a=b,c=d). Then it will print {'a':'b','c':'d'}
+3. Its used to run pythin with parameters as argument in automations.
+
+

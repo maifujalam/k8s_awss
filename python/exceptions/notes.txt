@@ -1,0 +1,4 @@
+1. try,except,finally
+2. raise: this keyword raise exception.Ex: raise ZeroDivideError.
+3. validate variable: assert a<=0
+
