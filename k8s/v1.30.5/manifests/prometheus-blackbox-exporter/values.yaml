@@ -276,7 +276,7 @@ serviceMonitor:
   ## https://github.com/coreos/prometheus-operator for blackbox-exporter itself
   ##
   selfMonitor:
-    enabled: false
+    enabled: true
     additionalMetricsRelabels: {}
     additionalRelabeling: []
     labels: {}
@@ -291,7 +291,7 @@ serviceMonitor:
   ## If true, a ServiceMonitor CRD is created for a prometheus operator
   ## https://github.com/coreos/prometheus-operator for each target
   ##
-  enabled: false
+  enabled: true
 
   # Default values that will be used for all ServiceMonitors created by `targets`
   defaults:
@@ -334,7 +334,7 @@ podMonitoring:
   ## https://cloud.google.com/stackdriver/docs/managed-prometheus/setup-managed#gmp-pod-monitoring for blackbox-exporter itself
   ##
   selfMonitor:
-    enabled: false
+    enabled: true
     additionalMetricsRelabels: {}
     labels: {}
     path: /metrics
@@ -344,7 +344,7 @@ podMonitoring:
   ## If true, a PodMonitoring CR is created for a google managed prometheus
   ## https://cloud.google.com/stackdriver/docs/managed-prometheus/setup-managed#gmp-pod-monitoring for each target
   ##
-  enabled: false
+  enabled: true
 
   ## Default values that will be used for all PodMonitoring created by `targets`
   ## Following PodMonitoring API specs https://github.com/GoogleCloudPlatform/prometheus-engine/blob/main/doc/api.md#scrapeendpoint

@@ -1,10 +1,10 @@
 apiVersion: monitoring.coreos.com/v1
 kind: Probe
 metadata:
-  name: bastion-node-exporter-probe
+  name: blackbox-node-exporter-probe
   namespace: prometheus-blackbox-exporter
   labels:
-#    probe: node-exporter
+    probe: node-exporter
     release: kube-prometheus-stack
 spec:
   jobName: node-exporter
