@@ -14,7 +14,7 @@ spec:
   targets:
     staticConfig:
       static:
-      - 172.31.0.10:9100
+      - 172.31.0.10:9100/metrics
   module: http_2xx
   metricRelabelings:
     - sourceLabels: ["__address__"]
