@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: bastion-node-exporter-ep
+  name: bastion-prometheus-node-exporter-ep
   namespace: kube-prometheus-stack
 subsets:
   - addresses:
@@ -17,7 +17,7 @@ metadata:
   name: external-node-exporter-svc
   namespace: kube-prometheus-stack
   labels:
-    app: bastion-node-exporter
+    app: bastion--prometheus-node-exporter
 spec:
   ports:
     - port: 9100
@@ -28,14 +28,14 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: external-node-exporter-service-monitor
+  name: external-prometheus-node-exporter-service-monitor
   namespace: kube-prometheus-stack
   labels:
     release: kube-prometheus-stack # Ensure this matches your Prometheus release name
 spec:
   selector:
     matchLabels:
-      app: bastion-node-exporter
+      app: bastion-prometheus-node-exporter
   namespaceSelector:
     matchNames:
       - kube-prometheus-stack
