@@ -17,7 +17,7 @@ metadata:
   name: external-node-exporter-svc
   namespace: kube-prometheus-stack
   labels:
-    app: bastion--prometheus-node-exporter
+    app: bastion-prometheus-node-exporter
 spec:
   ports:
     - port: 9100
@@ -41,4 +41,5 @@ spec:
       - kube-prometheus-stack
   endpoints:
     - port: metrics
+      scheme: http
       interval: 15s
