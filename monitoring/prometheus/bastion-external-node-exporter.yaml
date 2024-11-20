@@ -22,7 +22,7 @@ spec:
   ports:
     - port: 9100
       targetPort: metrics
-  clusterIP: None # Required for headless service
+#  clusterIP: None # Required for headless service
   selector: {}    # No selectors since it's targeting the external `Endpoints`
 ---
 apiVersion: monitoring.coreos.com/v1
