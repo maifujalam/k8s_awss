@@ -344,7 +344,7 @@ podMonitoring:
   ## If true, a PodMonitoring CR is created for a google managed prometheus
   ## https://cloud.google.com/stackdriver/docs/managed-prometheus/setup-managed#gmp-pod-monitoring for each target
   ##
-  enabled: true
+  enabled: false
 
   ## Default values that will be used for all PodMonitoring created by `targets`
   ## Following PodMonitoring API specs https://github.com/GoogleCloudPlatform/prometheus-engine/blob/main/doc/api.md#scrapeendpoint
