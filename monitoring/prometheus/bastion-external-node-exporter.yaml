@@ -35,7 +35,7 @@ metadata:
   labels:
     release: kube-prometheus-stack # Ensure this matches your Prometheus release name
 spec:
-  jobLabel: jobLabel # Set the job name using this field
+  jobLabel: node-exporter # Set the job name using this field
   selector:
     matchLabels:
       app: prometheus-node-exporter # To make it work with prometheus node exporter.
