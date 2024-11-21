@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: node-exporter
+  name: bastion-node-exporter
   namespace: kube-prometheus-stack
   labels:
     app: prometheus-node-exporter  # To make it work with prometheus node exporter.
@@ -17,7 +17,7 @@ subsets:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-exporter
+  name: bastion-node-exporter
   namespace: kube-prometheus-stack
   labels:
     app: prometheus-node-exporter # To make it work with prometheus node exporter.
