@@ -4,7 +4,7 @@ metadata:
   name: bastion-node-exporter
   namespace: kube-prometheus-stack
   labels:
-    app: prometheus-node-exporter  # To mke it work with prometheous node exporter.
+    app: prometheus-node-exporter  # To make it work with prometheus node exporter.
 subsets:
   - addresses:
       - ip: 172.31.0.10 # Replace with your external node's IP
@@ -19,7 +19,7 @@ metadata:
   name: bastion-node-exporter
   namespace: kube-prometheus-stack
   labels:
-    app: prometheus-node-exporter
+    app: prometheus-node-exporter # To make it work with prometheus node exporter.
 spec:
   ports:
     - port: 9100
@@ -37,7 +37,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: prometheus-node-exporter
+      app: prometheus-node-exporter # To make it work with prometheus node exporter.
   namespaceSelector:
     matchNames:
       - kube-prometheus-stack
