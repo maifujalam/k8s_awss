@@ -5,6 +5,7 @@ metadata:
   namespace: kube-prometheus-stack
   labels:
     app: prometheus-node-exporter  # To make it work with prometheus node exporter.
+    instance: 172.31.0.1
 subsets:
   - addresses:
       - ip: 172.31.0.10 # Replace with your external node's IP
@@ -20,6 +21,7 @@ metadata:
   namespace: kube-prometheus-stack
   labels:
     app: prometheus-node-exporter # To make it work with prometheus node exporter.
+    instance: 172.31.0.1
 spec:
   ports:
     - port: 9100
@@ -34,6 +36,7 @@ metadata:
   namespace: kube-prometheus-stack
   labels:
     release: kube-prometheus-stack # Ensure this matches your Prometheus release name
+    instance: 172.31.0.1
 spec:
   jobLabel: node-exporter # Set the job name using this field
   selector:
