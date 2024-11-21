@@ -334,7 +334,7 @@ podMonitoring:
   ## https://cloud.google.com/stackdriver/docs/managed-prometheus/setup-managed#gmp-pod-monitoring for blackbox-exporter itself
   ##
   selfMonitor:
-    enabled: true
+    enabled: false
     additionalMetricsRelabels: {}
     labels: {}
     path: /metrics
