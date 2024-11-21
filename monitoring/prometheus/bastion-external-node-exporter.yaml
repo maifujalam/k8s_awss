@@ -3,6 +3,8 @@ kind: Endpoints
 metadata:
   name: bastion-node-exporter
   namespace: kube-prometheus-stack
+  labels:
+    app: bastion-prometheus-node-exporter
 subsets:
   - addresses:
       - ip: 172.31.0.10 # Replace with your external node's IP
