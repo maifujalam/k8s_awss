@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: bastion-prometheus-node-exporter-ep
+  name: bastion-node-exporter
   namespace: kube-prometheus-stack
 subsets:
   - addresses:
@@ -14,7 +14,7 @@ subsets:
 apiVersion: v1
 kind: Service
 metadata:
-  name: external-node-exporter-svc
+  name: bastion-node-exporter
   namespace: kube-prometheus-stack
   labels:
     app: bastion-prometheus-node-exporter
@@ -22,7 +22,7 @@ spec:
   ports:
     - port: 9100
       targetPort: metrics
-#  clusterIP: None # Required for headless service
+  clusterIP: None # Required for headless service
   selector: {}    # No selectors since it's targeting the external `Endpoints`
 ---
 apiVersion: monitoring.coreos.com/v1
