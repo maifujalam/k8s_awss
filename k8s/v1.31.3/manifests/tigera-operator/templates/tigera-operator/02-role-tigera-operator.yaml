@@ -133,7 +133,6 @@ rules:
     - ippools
     - kubecontrollersconfigurations
     - bgpconfigurations
-    - ipamconfigurations
     verbs:
     - get
     - list
@@ -254,14 +253,10 @@ rules:
       - create
   - apiGroups:
      - crd.projectcalico.org
-     - projectcalico.org
     resources:
       - ipamblocks
-      - ipamconfigurations
     verbs:
       - list
-      - get
-      - watch
   # Need this permission for the calicoctl version mismatch checking
   - apiGroups:
       - crd.projectcalico.org
