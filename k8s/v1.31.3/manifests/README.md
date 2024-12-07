@@ -1,6 +1,7 @@
 Install Calico:-
 1. helm repo add calico https://stevehipwell.github.io/helm-charts/
-2. 
+2. helm search repo tigera-operator
+3. helm pull public-helm-repository/tigera-operator --version v3.29.1 --untar
 3. helm -n tigera-operator install calico tigera-operator --create-namespace
 2. helm -n tigera-operator uninstall calico
 3. helm -n tigera-operator upgrade calico tigera-operator
