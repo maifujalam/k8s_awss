@@ -23,4 +23,4 @@ spec:
     syncOptions:
     - Validate=false
     - CreateNamespace=true
-    - Replace=false
+    - Replace=true
