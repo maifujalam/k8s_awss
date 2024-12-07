@@ -124,7 +124,7 @@ controller:
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
     # Ingress creation gets rejected if there are multiple default IngressClasses.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
-    default: false
+    default: true
     # -- Annotations to be added to the IngressClass resource.
     annotations: {}
     # -- Controller of the IngressClass. An Ingress Controller looks for IngressClasses it should reconcile by this value.
@@ -240,7 +240,9 @@ controller:
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
-  tolerations: []
+  tolerations:
+   - key: node-role.kubernetes.io/control-plane
+     effect: NoSchedule
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"
@@ -319,7 +321,7 @@ controller:
   ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
   nodeSelector:
-    kubernetes.io/os: linux
+    node-role.kubernetes.io/control-plane: ""
   ## Liveness and readiness probe values
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
   ##
@@ -472,12 +474,15 @@ controller:
       # -- Enable the external controller service or not. Useful for internal-only deployments.
       enabled: true
     # -- Annotations to be added to the external controller service. See `controller.service.internal.annotations` for annotations to be added to the internal controller service.
-    annotations: {}
+    annotations:
+#      service.beta.kubernetes.io/aws-load-balancer-type: "external"
+#      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+#      service.beta.kubernetes.io/aws-load-balancer-arn: "arn:aws:elasticloadbalancing:ap-south-1:493253814443:loadbalancer/app/lb-1/13643c2907ab228b"
     # -- Labels to be added to both controller services.
     labels: {}
     # -- Type of the external controller service.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-    type: LoadBalancer
+    type: NodePort
     # -- Pre-defined cluster internal IP address of the external controller service. Take care of collisions with existing services.
     # This value is immutable. Set once, it can not be changed without deleting and re-creating the service.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#choosing-your-own-ip-address
@@ -499,7 +504,8 @@ controller:
 
     # -- External traffic policy of the external controller service. Set to "Local" to preserve source IP on providers supporting it.
     # Ref: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
-    externalTrafficPolicy: ""
+    externalTrafficPolicy: "Local"  # Nginx has to schedule on master node.
+    #externalTrafficPolicy: "Cluster" # Nginx can schedule on any node
     # -- Session affinity of the external controller service. Must be either "None" or "ClientIP" if set. Defaults to "None".
     # Ref: https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
     sessionAffinity: ""
@@ -535,14 +541,15 @@ controller:
     appProtocol: true
     nodePorts:
       # -- Node port allocated for the external HTTP listener. If left empty, the service controller allocates one from the configured node port range.
-      http: ""
+      http: 32080
       # -- Node port allocated for the external HTTPS listener. If left empty, the service controller allocates one from the configured node port range.
-      https: ""
+      https: 32443
       # -- Node port mapping for external TCP listeners. If left empty, the service controller allocates them from the configured node port range.
       # Example:
       # tcp:
       #   8080: 30080
-      tcp: {}
+      tcp:
+          8080: 32808
       # -- Node port mapping for external UDP listeners. If left empty, the service controller allocates them from the configured node port range.
       # Example:
       # udp:
@@ -816,8 +823,10 @@ controller:
         # -- Enable 'networkPolicy' or not
         enabled: false
       nodeSelector:
-        kubernetes.io/os: linux
-      tolerations: []
+        node-role.kubernetes.io/control-plane: ""
+      tolerations:
+         - key: node-role.kubernetes.io/control-plane
+           effect: NoSchedule
       # -- Labels to be added to patch job resources
       labels: {}
       # -- Security context for secret creation & webhook patch pods
@@ -951,7 +960,7 @@ revisionHistoryLimit: 10
 ##
 defaultBackend:
   ##
-  enabled: false
+  enabled: true
   name: defaultbackend
   image:
     registry: registry.k8s.io
@@ -1006,7 +1015,9 @@ defaultBackend:
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
-  tolerations: []
+  tolerations:
+     - key: node-role.kubernetes.io/control-plane
+       effect: NoSchedule
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"

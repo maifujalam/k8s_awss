@@ -1,4 +1,3 @@
-# +docs:section=Global
 
 # Default values for cert-manager.
 # This is a YAML-formatted file.
@@ -74,7 +73,7 @@ installCRDs: false
 crds:
   # This option decides if the CRDs should be installed
   # as part of the Helm installation.
-  enabled: false
+  enabled: true
 
   # This option makes it so that the "helm.sh/resource-policy": keep
   # annotation is added to the CRD. This will prevent Helm from uninstalling
@@ -114,7 +113,7 @@ podDisruptionBudget:
   # For example, the PodDisruptionBudget will block `kubectl drain`
   # if it is used on the Node where the only remaining cert-manager
   # Pod is currently running.
-  enabled: false
+  enabled: true
 
   # This configures the minimum available pods for disruptions. It can either be set to
   # an integer (e.g. 1) or a percentage value (e.g. 25%).
@@ -447,7 +446,9 @@ affinity: {}
 #     operator: Equal
 #     value: master
 #     effect: NoSchedule
-tolerations: []
+tolerations:
+ - key: node-role.kubernetes.io/control-plane
+   effect: NoSchedule
 
 # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core
 #
@@ -1148,7 +1149,9 @@ cainjector:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
+  tolerations:
+     - key: node-role.kubernetes.io/control-plane
+       effect: NoSchedule
 
   # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core).
   #
@@ -1356,7 +1359,9 @@ startupapicheck:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
+  tolerations:
+     - key: node-role.kubernetes.io/control-plane
+       effect: NoSchedule
 
   # Optional additional labels to add to the startupapicheck Pods.
   podLabels: {}
