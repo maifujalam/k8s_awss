@@ -256,6 +256,7 @@ rules:
      - crd.projectcalico.org
     resources:
       - ipamblocks
+      - ipamconfigurations
     verbs:
       - list
   # Need this permission for the calicoctl version mismatch checking
