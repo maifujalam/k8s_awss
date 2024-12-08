@@ -26,9 +26,9 @@ controller:
     ## for backwards compatibility consider setting the full image url via the repository value below
     ## use *either* current default registry/image or repository format or installing chart by providing the values.yaml will fail
     ## repository:
-    tag: "v1.11.3"
-    digest: sha256:d56f135b6462cfc476447cfe564b83a45e8bb7da2774963b00d12161112270b7
-    digestChroot: sha256:22701f0fc0f2dd209ef782f4e281bfe2d8cccd50ededa00aec88e0cdbe7edd14
+    tag: "v1.11.2"
+    digest: sha256:d5f8217feeac4887cb1ed21f27c2674e58be06bd8f5184cacea2a69abaf78dce
+    digestChroot: sha256:21b55a2f0213a18b91612a8c0850167e00a8e34391fd595139a708f9c047e7a8
     pullPolicy: IfNotPresent
     runAsNonRoot: true
     # www-data -> uid 101
@@ -194,13 +194,13 @@ controller:
     # -- Annotations to be added to the udp config configmap
     annotations: {}
   # -- Maxmind license key to download GeoLite2 Databases.
-  ## https://blog.maxmind.com/2019/12/significant-changes-to-accessing-and-using-geolite2-databases/
+  ## https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases
   maxmindLicenseKey: ""
   # -- Additional command line arguments to pass to Ingress-Nginx Controller
   # E.g. to specify the default SSL certificate you can use
-  extraArgs: {}
-  ## extraArgs:
-  ##   default-ssl-certificate: "<namespace>/<secret_name>"
+#  extraArgs: {}
+  extraArgs:
+    default-ssl-certificate: "cert-manager/wildcard-certificate-secret-prod"
   ##   time-buckets: "0.005,0.01,0.025,0.05,0.1,0.25,0.5,1,2.5,5,10"
   ##   length-buckets: "10,20,30,40,50,60,70,80,90,100"
   ##   size-buckets: "10,100,1000,10000,100000,1e+06,1e+07"
@@ -811,8 +811,8 @@ controller:
         ## for backwards compatibility consider setting the full image url via the repository value below
         ## use *either* current default registry/image or repository format or installing chart by providing the values.yaml will fail
         ## repository:
-        tag: v1.4.4
-        digest: sha256:a9f03b34a3cbfbb26d103a14046ab2c5130a80c3d69d526ff8063d2b37b9fd3f
+        tag: v1.4.3
+        digest: sha256:a320a50cc91bd15fd2d6fa6de58bd98c1bd64b9a6f926ce23a600d87043455a3
         pullPolicy: IfNotPresent
       # -- Provide a priority class name to the webhook patching job
       ##
@@ -882,7 +882,6 @@ controller:
     serviceMonitor:
       enabled: false
       additionalLabels: {}
-      # -- Annotations to be added to the ServiceMonitor.
       annotations: {}
       ## The label to use to retrieve the job name from.
       ## jobLabel: "app.kubernetes.io/name"
@@ -1102,7 +1101,6 @@ defaultBackend:
   ##
   podAnnotations: {}
   replicaCount: 1
-  # -- Minimum available pods set in PodDisruptionBudget.
   minAvailable: 1
   resources: {}
   # limits:

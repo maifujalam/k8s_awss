@@ -15,10 +15,6 @@ installation:
 apiServer:
   enabled: true
 
-
-defaultFelixConfiguration:
-  enabled: false
-
 certs:
   node:
     key:
@@ -53,15 +49,8 @@ podLabels: {}
 # Image and registry configuration for the tigera/operator pod.
 tigeraOperator:
   image: tigera/operator
-  version: v1.36.2
+  version: v1.30.4
   registry: quay.io
 calicoctl:
   image: docker.io/calico/ctl
-  tag: v3.29.1
-
-kubeletVolumePluginPath: /var/lib/kubelet
-
-# Optionally configure the host and port used to access the Kubernetes API server.
-kubernetesServiceEndpoint:
-  host: ""
-  port: "6443"
+  tag: v3.26.1
