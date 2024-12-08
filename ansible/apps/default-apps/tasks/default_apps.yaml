@@ -57,36 +57,36 @@
   register: r4
   ignore_errors: true
 
-#- name: Install ingress-nginx
-#  kubernetes.core.helm:
-#    name: ingress-nginx
-#    chart_ref: public-helm-repository/ingress-nginx
-#    release_namespace: ingress-nginx
-#    create_namespace: true
-#    chart_version: 4.11.3-aws
-#    values_files:
-#      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/ingress-nginx/values.yaml
-#  when: r4.rc != 0
-#
-#- name: Sleep fo 30 sec
-#  shell: sleep 30;
-#  when: r4.rc != 0
-#
-#- name: Check if argo-cd already installed
-#  shell: helm list -A | grep argo-cd
-#  register: r5
-#  ignore_errors: true
-#
-#- name: Install argo-cd
-#  kubernetes.core.helm:
-#    name: argo-cd
-#    chart_ref: /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/argo-cd
-#    release_namespace: argo-cd
-#    create_namespace: true
-#    chart_version: 7.7.7-aws
-#    values_files:
-#      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/argo-cd/values.yaml
-#  when: r5.rc != 0
-#
-#- name: Install Default Apps
-#  shell: kubectl apply -f /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/default-applications.yaml
+- name: Install ingress-nginx
+  kubernetes.core.helm:
+    name: ingress-nginx
+    chart_ref: public-helm-repository/ingress-nginx
+    release_namespace: ingress-nginx
+    create_namespace: true
+    chart_version: 4.11.2-aws
+    values_files:
+      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/ingress-nginx/values.yaml
+  when: r4.rc != 0
+
+- name: Sleep fo 30 sec
+  shell: sleep 30;
+  when: r4.rc != 0
+
+- name: Check if argo-cd already installed
+  shell: helm list -A | grep argo-cd
+  register: r5
+  ignore_errors: true
+
+- name: Install argo-cd
+  kubernetes.core.helm:
+    name: argo-cd
+    chart_ref: /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/argo-cd
+    release_namespace: argo-cd
+    create_namespace: true
+    chart_version: 7.7.7-aws
+    values_files:
+      - /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/argo-cd/values.yaml
+  when: r5.rc != 0
+
+- name: Install Default Apps
+  shell: kubectl apply -f /home/{{USER}}/{{PROJECT_PATH}}/k8s/v{{KUBERNETES_VERSION}}/manifests/default-applications.yaml
