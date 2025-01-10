@@ -165,6 +165,9 @@ AWS CSI Drover:-
 4. helm pull aws-ebs-csi-driver/aws-ebs-csi-driver  --version 2.36.0 --untar
 5. helm -n aws-ebs-csi-driver install aws-ebs-csi-driver aws-ebs-csi-driver --create-namespace
 
+Grafana Operator:-
+1. helm repo add aws-ebs-csi-driver oci://ghcr.io/grafana/helm-charts/grafana-operator
+
 Helm Package:-
 1. Build number is based on Char.yaml->version
 2. Helm package: h package hello-kubernetes
